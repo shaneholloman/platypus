@@ -354,7 +354,7 @@
     // Create icon
     // .app/Contents/Resources/appIcon.icns
     if (self[AppSpecKey_IconPath]) {
-        if ([FILEMGR fileExistsAtPath:self[AppSpecKey_IconPath]]) {
+        if ([WORKSPACE fileIsIcnsFileAtPath:self[AppSpecKey_IconPath]]) {
             [self report:@"Writing application icon"];
             NSString *iconPath = [resourcesPath stringByAppendingString:@"/AppIcon.icns"];
             [FILEMGR copyItemAtPath:self[AppSpecKey_IconPath] toPath:iconPath error:nil];

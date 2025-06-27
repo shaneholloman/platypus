@@ -38,6 +38,8 @@
 - (NSString *)fileSizeAsHumanReadableString:(UInt64)size;
 - (NSString *)fileOrFolderSizeAsHumanReadable:(NSString *)path;
 - (BOOL)isFileEmptyAtPath:(NSString *)path;
+- (BOOL)fileExistsAndIsExecutableAtPath:(NSString *)path;
+- (BOOL)fileIsIcnsFileAtPath:(NSString *)path;
 
 - (NSArray *)handlerApplicationsForFile:(NSString *)filePath;
 - (NSString *)defaultHandlerApplicationForFile:(NSString *)filePath;

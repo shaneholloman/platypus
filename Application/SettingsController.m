@@ -298,8 +298,7 @@
 #pragma mark - Install/Uninstall
 
 + (BOOL)isCommandLineToolInstalled {
-    return ([FILEMGR fileExistsAtPath:CMDLINE_TOOL_PATH] && [WORKSPACE isFileEmptyAtPath:CMDLINE_TOOL_PATH] == NO);
-    ;
+    return [WORKSPACE fileExistsAndIsExecutableAtPath:CMDLINE_TOOL_PATH];
 }
 
 + (void)putCommandLineToolInstallStatusInTextField:(NSTextField *)textField {

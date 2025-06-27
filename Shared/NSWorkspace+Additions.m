@@ -193,6 +193,44 @@
     return (error != nil || [d length] == 0);
 }
 
+- (BOOL)fileExistsAndIsExecutableAtPath:(NSString *)path {
+    BOOL isDir = NO;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:path
+                                                       isDirectory:&isDir];
+    if (exists == NO || isDir) {
+        return NO;
+    }
+    
+    if ([[NSFileManager defaultManager] isExecutableFileAtPath:path] == NO) {
+        return NO;
+    }
+    
+    NSError *err = nil;
+    NSDictionary<NSFileAttributeKey, id> *attrs;
+    attrs = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&err];
+    if (err != nil || [attrs fileSize] == 0) {
+        return NO;
+    }
+    
+    return YES;
+}
+
+- (BOOL)fileIsIcnsFileAtPath:(NSString *)path {
+    NSError *error = nil;
+    // Initialize data object without loading it into memory
+    NSData *d = [NSData dataWithContentsOfFile:path
+                                       options:NSDataReadingMappedAlways
+                                         error:&error];
+    if (error != nil || [d length] == 0) {
+        return NO;
+    }
+    
+    char hdr_chars[4];
+    [d getBytes:&hdr_chars length:4];
+    
+    return [@(hdr_chars) isEqualToString:@"icns"];
+}
+
 #pragma mark - Open With menu
 
 - (NSArray *)handlerApplicationsForFile:(NSString *)filePath {
