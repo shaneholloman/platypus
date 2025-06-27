@@ -90,8 +90,6 @@
 		F481A4B52AE94169000E46DC /* ThemeObservingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F481A4B32AE94169000E46DC /* ThemeObservingTextView.m */; };
 		F482697F1BCAE1EE00169D8B /* TypeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F482697E1BCAE1EE00169D8B /* TypeListController.m */; };
 		F48269831BCAF1D800169D8B /* UniformTypeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = F48269821BCAF1D800169D8B /* UniformTypeListController.m */; };
-		F484D45921A9DDAE006EE28D /* ScriptDocument.icns in Resources */ = {isa = PBXBuildFile; fileRef = F484D45721A9DDAE006EE28D /* ScriptDocument.icns */; };
-		F484D45A21A9DDAE006EE28D /* ProfileDocument.icns in Resources */ = {isa = PBXBuildFile; fileRef = F484D45821A9DDAE006EE28D /* ProfileDocument.icns */; };
 		F484D45B21AA005D006EE28D /* NSWorkspace+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = F4975D6F1B2E09280099D16E /* NSWorkspace+Additions.m */; };
 		F484D45E21AA03C2006EE28D /* NSFileManager+TempFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = F484D45C21AA03C1006EE28D /* NSFileManager+TempFiles.m */; };
 		F484D45F21AA03C2006EE28D /* NSFileManager+TempFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = F484D45C21AA03C1006EE28D /* NSFileManager+TempFiles.m */; };
@@ -274,8 +272,6 @@
 		F482697E1BCAE1EE00169D8B /* TypeListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypeListController.m; path = Application/TypeListController.m; sourceTree = "<group>"; };
 		F48269811BCAF1D800169D8B /* UniformTypeListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UniformTypeListController.h; path = Application/UniformTypeListController.h; sourceTree = "<group>"; };
 		F48269821BCAF1D800169D8B /* UniformTypeListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UniformTypeListController.m; path = Application/UniformTypeListController.m; sourceTree = "<group>"; };
-		F484D45721A9DDAE006EE28D /* ScriptDocument.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ScriptDocument.icns; sourceTree = "<group>"; };
-		F484D45821A9DDAE006EE28D /* ProfileDocument.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ProfileDocument.icns; sourceTree = "<group>"; };
 		F484D45C21AA03C1006EE28D /* NSFileManager+TempFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSFileManager+TempFiles.m"; path = "Shared/NSFileManager+TempFiles.m"; sourceTree = "<group>"; };
 		F484D45D21AA03C2006EE28D /* NSFileManager+TempFiles.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSFileManager+TempFiles.h"; path = "Shared/NSFileManager+TempFiles.h"; sourceTree = "<group>"; };
 		F484D46121AAE1DB006EE28D /* Interpreter_Node.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Interpreter_Node.png; sourceTree = "<group>"; };
@@ -493,7 +489,6 @@
 				F45B1F241FF5618000A935D7 /* InterfaceTypeIcons */,
 				F45B1F051FF5617400A935D7 /* Interpreters */,
 				F44E007212298B7A00CAC9C2 /* Application */,
-				F43142B21C03F9E2004EEF8C /* Documents */,
 				F44E007312298B8C00CAC9C2 /* Status Menu */,
 			);
 			path = Icons;
@@ -515,15 +510,6 @@
 				F4975D771B2E09450099D16E /* STPathTextField.m */,
 			);
 			name = STPathTextField;
-			sourceTree = "<group>";
-		};
-		F43142B21C03F9E2004EEF8C /* Documents */ = {
-			isa = PBXGroup;
-			children = (
-				F484D45821A9DDAE006EE28D /* ProfileDocument.icns */,
-				F484D45721A9DDAE006EE28D /* ScriptDocument.icns */,
-			);
-			name = Documents;
 			sourceTree = "<group>";
 		};
 		F44587170FC386B500CD0C02 /* STPrivilegedTask */ = {
@@ -966,7 +952,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F4E1F70611F75921007EE2E3 /* Build configuration list for PBXNativeTarget "platypus_clt" */;
 			buildPhases = (
-				F4B4F71A2231B18300F3C073 /* Copy and gzip MainMenu.nib files from ScriptExec */,
 				F4E1F6F911F758FB007EE2E3 /* Sources */,
 				F4E1F6FA11F758FB007EE2E3 /* Frameworks */,
 				F4FB337514FBDAD500BAECEB /* Run Script to Create Man Page HTML document */,
@@ -989,7 +974,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1630;
+				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = "Sveinbjorn Thordarson";
 				TargetAttributes = {
 					F4E1F6FB11F758FB007EE2E3 = {
@@ -1006,6 +991,7 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Platypus */;
 			projectDirPath = "";
@@ -1038,7 +1024,6 @@
 				F44A77431C1882DA003CCA7A /* InstallCommandLineTool.sh in Resources */,
 				F45B1F171FF5617500A935D7 /* Interpreter_PHP.png in Resources */,
 				F48002CB121AF042003FB5B3 /* images in Resources */,
-				F484D45A21A9DDAE006EE28D /* ProfileDocument.icns in Resources */,
 				F4146CCF2149E76000BB36AD /* Interpreter_AWK.png in Resources */,
 				F44E001D1229868100CAC9C2 /* DefaultStatusMenuIcon.png in Resources */,
 				F436471521A1BDA600A8749D /* platypus.man.html in Resources */,
@@ -1050,7 +1035,6 @@
 				F42E2EAB20A9E001003D2E89 /* Credits.rtf in Resources */,
 				F4975DC01B2E71FC0099D16E /* Platypus.xib in Resources */,
 				F44A77441C1882DA003CCA7A /* UninstallCommandLineTool.sh in Resources */,
-				F484D45921A9DDAE006EE28D /* ScriptDocument.icns in Resources */,
 				F45B1F201FF5617500A935D7 /* Interpreter_csh.png in Resources */,
 				F45B1F161FF5617500A935D7 /* Interpreter_sh.png in Resources */,
 				F484D46221AAE1DC006EE28D /* Interpreter_Node.png in Resources */,
@@ -1177,25 +1161,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "exit 0\n# Only do this for release builds so CI testing works\n#if [ \"${CONFIGURATION}\" != \"Deployment\" ]; then\n#  exit 0\n#fi\n\n# We need to sign Autoupdate.app within Sparkle framework for update installation to work\nLOCATION=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/A/Resources/Autoupdate.app\"\nIDENTITY=${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\ncodesign --verbose --force --deep --sign \"$IDENTITY\" \"$LOCATION\"\n";
-		};
-		F4B4F71A2231B18300F3C073 /* Copy and gzip MainMenu.nib files from ScriptExec */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Copy and gzip MainMenu.nib files from ScriptExec";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\nSCRIPT_EXEC_APP_PATH=\"${BUILT_PRODUCTS_DIR}/ScriptExec.app\"\nSCRIPT_EXEC_NIB_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/Resources/MainMenu.nib\"\n\nNIB_DESIGNABLE=\"designable.nib\"\nNIB_KEYEDOBJECTS=\"keyedobjects.nib\"\n\nNIB_DESIGNABLE_PATH=\"${SCRIPT_EXEC_NIB_PATH}/${NIB_DESIGNABLE}\"\nNIB_KEYEDOBJECTS_PATH=\"${SCRIPT_EXEC_NIB_PATH}/${NIB_KEYEDOBJECTS}\"\n\ncp $NIB_DESIGNABLE_PATH \"${BUILT_PRODUCTS_DIR}/${NIB_DESIGNABLE}\"\ngzip -9 \"${BUILT_PRODUCTS_DIR}/${NIB_DESIGNABLE}\"\ncp $NIB_KEYEDOBJECTS_PATH \"${BUILT_PRODUCTS_DIR}/${NIB_KEYEDOBJECTS}\"\ngzip -9 \"${BUILT_PRODUCTS_DIR}/${NIB_KEYEDOBJECTS}\"\n\nexit 0\n\n\n\n\n\n\n\n\n\n\n";
 		};
 		F4DC737D21644E0400D79823 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1526,6 +1491,12 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1592,6 +1563,12 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = "";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;

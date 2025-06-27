@@ -13,7 +13,9 @@
 				<string>sh</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Shell Script</string>
 			<key>CFBundleTypeRole</key>
@@ -35,7 +37,9 @@
 				<string>bash</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Bash Shell Script</string>
 			<key>CFBundleTypeRole</key>
@@ -57,7 +61,9 @@
 				<string>tcsh</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>TENEX C Shell Script</string>
 			<key>CFBundleTypeRole</key>
@@ -79,7 +85,9 @@
 				<string>csh</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>C Shell Script</string>
 			<key>CFBundleTypeRole</key>
@@ -101,7 +109,9 @@
 				<string>zsh</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Zsh Shell Script</string>
 			<key>CFBundleTypeRole</key>
@@ -123,7 +133,9 @@
 				<string>ksh</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Korn Shell Script</string>
 			<key>CFBundleTypeRole</key>
@@ -145,7 +157,9 @@
 				<string>pl</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Perl Script</string>
 			<key>CFBundleTypeRole</key>
@@ -167,7 +181,9 @@
 				<string>py</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Python Script</string>
 			<key>CFBundleTypeRole</key>
@@ -189,7 +205,9 @@
 				<string>rb</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Ruby Script</string>
 			<key>CFBundleTypeRole</key>
@@ -213,7 +231,9 @@
 				<string>applescript</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>AppleScript File</string>
 			<key>CFBundleTypeRole</key>
@@ -237,7 +257,9 @@
 				<string>tclsh</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Tcl Script</string>
 			<key>CFBundleTypeRole</key>
@@ -260,7 +282,9 @@
 				<string>expect</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Expect Script</string>
 			<key>CFBundleTypeRole</key>
@@ -287,7 +311,9 @@
 				<string>php7</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>PHP Script</string>
 			<key>CFBundleTypeRole</key>
@@ -309,7 +335,9 @@
 				<string>swift</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Swift Script</string>
 			<key>CFBundleTypeRole</key>
@@ -331,7 +359,9 @@
 				<string>awk</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>AWK Script</string>
 			<key>CFBundleTypeRole</key>
@@ -353,7 +383,9 @@
 				<string>js</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ScriptDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>JavaScript Source File</string>
 			<key>CFBundleTypeRole</key>
@@ -375,7 +407,9 @@
 				<string>platypus</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
-			<string>ProfileDocument.icns</string>
+			<string></string>
+			<key>CFBundleTypeIconSystemGenerated</key>
+			<integer>1</integer>
 			<key>CFBundleTypeName</key>
 			<string>Platypus Profile</string>
 			<key>CFBundleTypeRole</key>
@@ -411,7 +445,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1281</string>
+	<string>1282</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
@@ -442,9 +476,14 @@
 			<key>UTTypeDescription</key>
 			<string>Platypus Profile</string>
 			<key>UTTypeIconFile</key>
-			<array>
-				<string>ProfileDocument.icns</string>
-			</array>
+			<string></string>
+			<key>UTTypeIcons</key>
+			<dict>
+				<key>UTTypeIconBadgeName</key>
+				<string>PlatypusAppIcon</string>
+				<key>UTTypeIconText</key>
+				<string>Profile</string>
+			</dict>
 			<key>UTTypeIdentifier</key>
 			<string>org.sveinbjorn.platypus-profile</string>
 			<key>UTTypeTagSpecification</key>
