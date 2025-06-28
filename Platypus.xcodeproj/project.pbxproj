@@ -43,8 +43,6 @@
 		F43142B01C03C742004EEF8C /* PlatypusScriptUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = F48B1EDE17935BBC007DA173 /* PlatypusScriptUtils.m */; };
 		F436471421A1BD9D00A8749D /* platypus.1 in Resources */ = {isa = PBXBuildFile; fileRef = F45BB35A219224E900DC7A00 /* platypus.1 */; };
 		F436471521A1BDA600A8749D /* platypus.man.html in Resources */ = {isa = PBXBuildFile; fileRef = F45BB35C219224E900DC7A00 /* platypus.man.html */; };
-		F43C430E26876F060013914C /* img1.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C430C26876F060013914C /* img1.png */; };
-		F43C430F26876F060013914C /* img2.png in Resources */ = {isa = PBXBuildFile; fileRef = F43C430D26876F060013914C /* img2.png */; };
 		F43C431126876F250013914C /* SEController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43C431026876F250013914C /* SEController.m */; };
 		F445EA7B14FAB93300DCCDB3 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F445EA7A14FAB93300DCCDB3 /* dsa_pub.pem */; };
 		F44A77431C1882DA003CCA7A /* InstallCommandLineTool.sh in Resources */ = {isa = PBXBuildFile; fileRef = F44A77401C1882DA003CCA7A /* InstallCommandLineTool.sh */; };
@@ -164,13 +162,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = F4E1F6FB11F758FB007EE2E3;
 			remoteInfo = platypus;
-		};
-		F4B4F7182231B10000F3C073 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F48B774011F7661C00351575;
-			remoteInfo = ScriptExec;
 		};
 		F4DC73842164EF7900D79823 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -916,7 +907,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				F4E482C628C42CA400F99216 /* Embed Frameworks */,
-				F49DB7A925727F65009B6257 /* Custom Code Signing Script */,
+				F49DB7A925727F65009B6257 /* Sign All Binaries */,
 			);
 			buildRules = (
 			);
@@ -960,7 +951,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F4B4F7192231B10000F3C073 /* PBXTargetDependency */,
 			);
 			name = platypus_clt;
 			productName = platypus;
@@ -1064,8 +1054,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F44A77501C1887CC003CCA7A /* script in Resources */,
-				F43C430E26876F060013914C /* img1.png in Resources */,
-				F43C430F26876F060013914C /* img2.png in Resources */,
 				F44A774D1C1887CC003CCA7A /* AppSettings.plist in Resources */,
 				F48FB47321A7841B0000C0E9 /* PlatypusDefault.icns in Resources */,
 				F44A774F1C1887CC003CCA7A /* MainMenu.xib in Resources */,
@@ -1123,7 +1111,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm \"${PROJECT_DIR}/Tests/platypus\"\nln -s \"${TARGET_BUILD_DIR}/platypus_clt\" \"${PROJECT_DIR}/Tests/platypus\"\n\n";
+			shellScript = "# Create symlink to the binary in the Tests folder\n# so tests invoke latest built version of CLT\nrm \"${PROJECT_DIR}/Tests/platypus\"\nln -s \"${TARGET_BUILD_DIR}/platypus_clt\" \"${PROJECT_DIR}/Tests/platypus\"\n\n";
 		};
 		F4302B7B21C5A04A001C8BEC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1141,9 +1129,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n# Read interpreter path from the script's shebang line\n# and set it as interpreter in AppSettings.plist\nAPPSETTINGS=\"${TARGET_BUILD_DIR}/ScriptExec.app/Contents/Resources/AppSettings.plist\"\nSCRIPT=\"${TARGET_BUILD_DIR}/ScriptExec.app/Contents/Resources/script\"\nINTERPRETER=$(head -n 1 $SCRIPT | cut -b 3-300 | tr -d '\\n')\n/usr/libexec/PlistBuddy -c \"Set :InterpreterPath ${INTERPRETER}\" \"${APPSETTINGS}\"\n\n\n\n\n\n\n\n\n\n\n\n\n";
+			shellScript = "#!/bin/sh\n# Read interpreter path from the script's shebang line\n# and set it as interpreter in AppSettings.plist\n# This is just for convenience when debugging and switching\n# often between interpreters. Better to control it via shebang.\nAPPSETTINGS=\"${TARGET_BUILD_DIR}/ScriptExec.app/Contents/Resources/AppSettings.plist\"\nSCRIPT=\"${TARGET_BUILD_DIR}/ScriptExec.app/Contents/Resources/script\"\nINTERPRETER=$(head -n 1 $SCRIPT | cut -b 3-300 | tr -d '\\n')\n/usr/libexec/PlistBuddy -c \"Set :InterpreterPath ${INTERPRETER}\" \"${APPSETTINGS}\"\n\n\n\n\n\n\n\n\n\n\n\n\n";
 		};
-		F49DB7A925727F65009B6257 /* Custom Code Signing Script */ = {
+		F49DB7A925727F65009B6257 /* Sign All Binaries */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -1153,15 +1141,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Custom Code Signing Script";
+			name = "Sign All Binaries";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "
-";
+			shellScript = "#exit 0\n# We need to sign all binaries within Sparkle framework for update installation to work\n# Only do this for release builds so CI testing works\nif [ \"${CODE_SIGNING_REQUIRED}\" != \"YES\" ]; then\n  exit 0\nfi\n\n\nLOCATION1=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app/Contents/MacOS/Updater\"\nLOCATION2=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate\"\nLOCATION3=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc/Contents/MacOS/Downloader\"\nLOCATION4=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework\"\nLOCATION5=\"${BUILT_PRODUCTS_DIR}/Platypus.app\"\n\nIDENTITY=\"16A0188A9D74911B21953A33684437F70902BC30\"\n#${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#echo $IDENTITY\n\n\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION1\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION2\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION3\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION4\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION5\"\n\n";
 		};
 		F4DC737D21644E0400D79823 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1299,11 +1286,6 @@
 			isa = PBXTargetDependency;
 			target = F4E1F6FB11F758FB007EE2E3 /* platypus_clt */;
 			targetProxy = F40B22781B28D763003C05ED /* PBXContainerItemProxy */;
-		};
-		F4B4F7192231B10000F3C073 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F48B774011F7661C00351575 /* ScriptExec */;
-			targetProxy = F4B4F7182231B10000F3C073 /* PBXContainerItemProxy */;
 		};
 		F4DC73852164EF7900D79823 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
