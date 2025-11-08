@@ -878,6 +878,8 @@
     }
     estimatedAppSize += nibSize;
     
+    estimatedAppSize -= 50 * 1024; // Just because it's more accurate!
+    
     // Bundled files altogether
     estimatedAppSize += [bundledFilesController totalSizeOfFiles];
     

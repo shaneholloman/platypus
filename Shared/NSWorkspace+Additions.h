@@ -28,7 +28,6 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 
-@import Foundation;
 @import Cocoa;
 
 @interface NSWorkspace (Additions)

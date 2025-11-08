@@ -133,7 +133,7 @@
 }
 
 - (void)updateFileSizeField {
-    //if there are no items
+    // If there are no items
     if ([files count] == 0) {
         _totalSizeOfFiles = 0;
         [bundleSizeTextField setStringValue:@""];
@@ -141,7 +141,7 @@
         return;
     }
     
-    //otherwise, loop through all files, calculate size in a separate queue
+    // Otherwise, loop through all files, calculate size in a separate queue
     [bundleSizeTextField setStringValue:@"Calculating size..."];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^(void){
@@ -258,7 +258,7 @@
     [WORKSPACE openFile:files[index][@"Path"]];
 }
 
-- (void)openInEditor:(NSUInteger)index {
+- (void)openInEditor:(int)index {
     NSString *defaultEditor = [DEFAULTS stringForKey:DefaultsKey_DefaultEditor];
     NSString *path = files[index][@"Path"];
     
@@ -292,7 +292,7 @@
     NSMutableString *copyStr = [[NSMutableString alloc] initWithString:@""];
     NSIndexSet *selectedItems = [tableView selectedRowIndexes];
     
-    for (NSInteger i = 0; i < [files count]; i++) {
+    for (int i = 0; i < [files count]; i++) {
         if ([selectedItems containsIndex:i]) {
             NSDictionary *fileInfoDict = files[i];
             NSString *name = basenameOnly ? fileInfoDict[@"Path"] : [fileInfoDict[@"Path"] lastPathComponent];
@@ -339,7 +339,7 @@
 
 - (IBAction)revealSelectedFilesInFinder:(id)sender {
     NSIndexSet *selectedItems = [tableView selectedRowIndexes];
-    for (NSInteger i = 0; i < [files count]; i++) {
+    for (int i = 0; i < [files count]; i++) {
         if ([selectedItems containsIndex:i]) {
             [self revealInFinder:i];
         }
@@ -348,7 +348,7 @@
 
 - (IBAction)openSelectedFiles:(id)sender {
     NSIndexSet *selectedItems = [tableView selectedRowIndexes];
-    for (NSInteger i = 0; i < [files count]; i++) {
+    for (int i = 0; i < [files count]; i++) {
         if ([selectedItems containsIndex:i]) {
             [self openInFinder:i];
         }
@@ -357,7 +357,7 @@
 
 - (IBAction)editSelectedFile:(id)sender {
     NSIndexSet *selectedItems = [tableView selectedRowIndexes];
-    for (NSInteger i = 0; i < [files count]; i++) {
+    for (int i = 0; i < [files count]; i++) {
         if ([selectedItems containsIndex:i]) {
             [self openInEditor:i];
             return;
@@ -454,7 +454,7 @@
     // Folders are never editable
     if (selector == @selector(openInEditor:))  {
         NSIndexSet *selectedItems = [tableView selectedRowIndexes];
-        for (NSUInteger i = 0; i < [files count]; i++) {
+        for (int i = 0; i < [files count]; i++) {
             if ([selectedItems containsIndex:i]) {
                 NSString *filename = files[i][@"Path"];
                 BOOL isFolder;

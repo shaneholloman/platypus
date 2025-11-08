@@ -36,8 +36,7 @@ Platypus creates application bundles with a special executable binary that runs 
 
 Platypus is **not** a set of bindings between the native macOS APIs and scripting languages. It is not a full GUI development environment and is not intended for creating substantial applications with complex and dynamic user interaction. If you want to create advanced macOS applications, you should learn to program using the Cocoa APIs. Platypus is not and never will be a substitute for learning to use the native application programming interfaces.
 
-That being said, you may be able to add some interactive GUI elements using [CocoaDialog](https://github.com/cocoadialog/cocoadialog),
-[Pashua](https://www.bluem.net/en/projects/pashua/) or [AppleScript](#prompting-for-input-via-osascript-applescript).
+That being said, you may be able to add some interactive GUI elements using something like [Pashua](https://www.bluem.net/en/projects/pashua/) or [AppleScript](#prompting-for-input-via-osascript-applescript).
 
 
 ### System Requirements
@@ -71,7 +70,7 @@ The name of your application.
 
 **Script Path**
 
-Path to the script you want to create an app from. Either use the **Select** button to select a script, or drag a script file on the Platypus window. You can also type in a path  manually (the text field supports supports shell-style tab autocompletion).
+Path to the script you want to create an app from. Either use the **Select** button to select a script, or drag a script file on the Platypus window. You can also type in a path  manually (the text field supports shell-style tab autocompletion).
 
 <img src="images/script_path.png" width="492" alt="Platypus Script Path">
     
@@ -85,7 +84,7 @@ The **New** button creates a script file in the Platypus Application Support fol
 
 <img src="images/script_type.png" style="float: right; margin-left:20px; margin-bottom:20px;" width="135">
 
-Use **Script Type** to specify an interpreter for your script. Either select one of the predefined scripting languages from the the pop-up menu or type in the path to an interpreter binary.
+Use **Script Type** to specify an interpreter for your script. Either select one of the predefined scripting languages from the pop-up menu or type in the path to an interpreter binary.
 
 Most of the time, you do not need to specify this manually. Whenever you open a script file, Platypus automatically tries to determine its type based on the file suffix and shebang line (`#!`). If you have specified this meta-data in the script file itself, Platypus is usually smart enough to figure it out.
 
@@ -117,7 +116,7 @@ A small window with an indeterminate progress bar and a "Cancel" button appears 
 
 Shows a window with a text view containing script output. Please note that this text view is *not* a full, interactive terminal session, and cannot be used to prompt for user input via `stdin`. It does not support any of the standard terminal commands and cannot be used to display ncurses-based interfaces.
 
-The styling of the text view can configured under **Text Settings**.
+The styling of the text view can be configured under **Text Settings**.
 
 <img src="images/interface_textwindow.png" width="469">
 
@@ -252,7 +251,7 @@ This feature only works for interpreters that support syntax checking (bash, Per
 
 ### Show Shell Command
 
-Platypus includes a **command line tool** counterpart to the Platypus.app application, `platypus`, which can be installed into `/usr/local/bin/` via **Settings**. The man page for this tool is available from the Help menu, and via the command line. There is also an [online version available](https://sveinbjorn.org/files/manpages/platypus.man.html)</a>.
+Platypus includes a **command line tool** counterpart to the Platypus.app application, `platypus`, which can be installed into `/usr/local/bin/` via **Settings**. The man page for this tool is available from the Help menu, and via the command line. There is also an [online version available](https://sveinbjorn.org/files/manpages/platypus.man.html).
 
 The command line tool does not in any way depend on the Platypus application once it has been installed.
 
@@ -356,29 +355,6 @@ If your script prints the string "REFRESH\n" to STDOUT, the text output buffer w
 ### Loading a Website into a Web View
 
 If interface type was set to **Web View** and your script prints "LOCATION:http://some.url.com\n", the Web View will load the URL in question.
-
-
-
-### User interaction with CocoaDialog
-
-Platypus apps may be able to use [CocoaDialog](https://github.com/cocoadialog/cocoadialog) to construct scripts that prompt for user input with dialogs. As of writing, the CocoaDialog project seems to be dead and so the following instructions may be obsolete:
-
-* Download CocoaDialog
-* Add CocoaDialog.app to the list of Bundled Files.
-
-The following script shows how to query for input using the bundled copy of CocoaDialog:
-
-```
-#!/bin/bash
-
-CD="CocoaDialog.app/Contents/MacOS/CocoaDialog"
-
-rv=`$CD yesno-msgbox --string-output`
-$CD ok-msgbox --no-cancel --text "You pressed $rv"
-```
-
-This application will present the user with an alert and several buttons. When the user presses one of the buttons, a feedback dialog is generated notifying the user which button he pressed. While this particular script accomplishes nothing, it serves as a basic example of how to add interactive elements to the script.
-
 
 
 ### Creating a Status Menu app
@@ -523,7 +499,7 @@ If you come up with a particularly nifty use of Platypus and think it might make
 
 ### Updating Platypus
 
-Platypus uses <a href="https://sparkle-project.org">Sparkle</a> for updates. You can update to the latest version by selecting **Check for updates...** in the application menu. Future releases may or may not break your saved profiles. Consult the version change log for details.
+Platypus uses [Sparkle](https://sparkle-project.org) for updates. You can update to the latest version by selecting **Check for updates...** in the application menu. Future releases may or may not break your saved profiles. Consult the version change log for details.
 
 The AppCast XML file is available [here](https://sveinbjorn.org/files/appcasts/PlatypusAppcast.xml).
 

@@ -345,8 +345,7 @@ pre code, pre tt {
 <p>Platypus creates application bundles with a special executable binary that runs a script and captures its output. The binary can be configured to present the script&#39;s text output in various ways, for example by showing a progress bar, a text view, a Status Item menu or a WebKit-based web view.</p>
 <h3 id="what-platypus-is-not">What Platypus is NOT</h3>
 <p>Platypus is <strong>not</strong> a set of bindings between the native macOS APIs and scripting languages. It is not a full GUI development environment and is not intended for creating substantial applications with complex and dynamic user interaction. If you want to create advanced macOS applications, you should learn to program using the Cocoa APIs. Platypus is not and never will be a substitute for learning to use the native application programming interfaces.</p>
-<p>That being said, you may be able to add some interactive GUI elements using <a href="https://github.com/cocoadialog/cocoadialog">CocoaDialog</a>,
-<a href="https://www.bluem.net/en/projects/pashua/">Pashua</a> or <a href="#prompting-for-input-via-osascript-applescript">AppleScript</a>.</p>
+<p>That being said, you may be able to add some interactive GUI elements using something like <a href="https://www.bluem.net/en/projects/pashua/">Pashua</a> or <a href="#prompting-for-input-via-osascript-applescript">AppleScript</a>.</p>
 <h3 id="system-requirements">System Requirements</h3>
 <p>Both Platypus and the applications it generates require <strong>macOS 10.13</strong> or later and are provided as <strong>64-bit ARM/Intel</strong> binaries. If you want to target macOS 10.8-10.12, use <a href="https://sveinbjorn.org/files/software/platypus/platypus5.3.zip">version 5.3</a>.
 If you want to target 10.6 and/or 32-bit Intel systems,
@@ -362,13 +361,13 @@ If you want to target 10.6 and/or 32-bit Intel systems,
 <p><strong>App Name</strong></p>
 <p>The name of your application.</p>
 <p><strong>Script Path</strong></p>
-<p>Path to the script you want to create an app from. Either use the <strong>Select</strong> button to select a script, or drag a script file on the Platypus window. You can also type in a path  manually (the text field supports supports shell-style tab autocompletion).</p>
+<p>Path to the script you want to create an app from. Either use the <strong>Select</strong> button to select a script, or drag a script file on the Platypus window. You can also type in a path  manually (the text field supports shell-style tab autocompletion).</p>
 <p><img src="images/script_path.png" width="492" alt="Platypus Script Path"></p>
 <p>Once you have selected a script, you can press the <strong>Edit</strong> button to open it in your default text editor. Platypus defaults to using a very basic built-in text editor. You can change this in the <strong>Settings</strong> if you want to use a more capable external editor.</p>
 <p>The <strong>New</strong> button creates a script file in the Platypus Application Support folder and opens it in the default editor. The <strong>Reveal</strong> button reveals the script file in the Finder.</p>
 <h3 id="interpreter">Interpreter</h3>
 <p><img src="images/script_type.png" style="float: right; margin-left:20px; margin-bottom:20px;" width="135"></p>
-<p>Use <strong>Script Type</strong> to specify an interpreter for your script. Either select one of the predefined scripting languages from the the pop-up menu or type in the path to an interpreter binary.</p>
+<p>Use <strong>Script Type</strong> to specify an interpreter for your script. Either select one of the predefined scripting languages from the pop-up menu or type in the path to an interpreter binary.</p>
 <p>Most of the time, you do not need to specify this manually. Whenever you open a script file, Platypus automatically tries to determine its type based on the file suffix and shebang line (<code>#!</code>). If you have specified this meta-data in the script file itself, Platypus is usually smart enough to figure it out.</p>
 <p>Please note that the interpreter must exist on the system where the application is run. Most of the preset scripting language interpreters are a standard part of all macOS installations.</p>
 <p><strong>Args</strong> let you add arguments to the script and/or its interpreter.</p>
@@ -440,7 +439,7 @@ If you want to target 10.6 and/or 32-bit Intel systems,
 <p>This feature only works for interpreters that support syntax checking (bash, Perl, Python, Ruby, PHP and Swift).</p>
 <p><img src="images/syntax_checker.png" width="473"></p>
 <h3 id="show-shell-command">Show Shell Command</h3>
-<p>Platypus includes a <strong>command line tool</strong> counterpart to the Platypus.app application, <code>platypus</code>, which can be installed into <code>/usr/local/bin/</code> via <strong>Settings</strong>. The man page for this tool is available from the Help menu, and via the command line. There is also an <a href="https://sveinbjorn.org/files/manpages/platypus.man.html">online version available</a></a>.</p>
+<p>Platypus includes a <strong>command line tool</strong> counterpart to the Platypus.app application, <code>platypus</code>, which can be installed into <code>/usr/local/bin/</code> via <strong>Settings</strong>. The man page for this tool is available from the Help menu, and via the command line. There is also an <a href="https://sveinbjorn.org/files/manpages/platypus.man.html">online version available</a>.</p>
 <p>The command line tool does not in any way depend on the Platypus application once it has been installed.</p>
 <p><img src="images/shell_command.png" width="471"></p>
 <p><strong>Show Shell Command</strong> in the <strong>Action</strong> menu displays the command required to execute the platypus command line tool using all the options selected in the graphical interface. This can be helpful if you have the command line tool installed and want to automate the creation of script apps within a larger build process.</p>
@@ -476,20 +475,6 @@ If you want to target 10.6 and/or 32-bit Intel systems,
 <p>If your script prints the string &quot;REFRESH\n&quot; to STDOUT, the text output buffer will be cleared. This can, for example, be used to clear a Web View in preparation for new HTML output.</p>
 <h3 id="loading-a-website-into-a-web-view">Loading a Website into a Web View</h3>
 <p>If interface type was set to <strong>Web View</strong> and your script prints &quot;LOCATION:<a href="http://some.url.com\n&quot;">http://some.url.com\n&quot;</a>, the Web View will load the URL in question.</p>
-<h3 id="user-interaction-with-cocoadialog">User interaction with CocoaDialog</h3>
-<p>Platypus apps may be able to use <a href="https://github.com/cocoadialog/cocoadialog">CocoaDialog</a> to construct scripts that prompt for user input with dialogs. As of writing, the CocoaDialog project seems to be dead and so the following instructions may be obsolete:</p>
-<ul>
-<li>Download CocoaDialog</li>
-<li>Add CocoaDialog.app to the list of Bundled Files.</li>
-</ul>
-<p>The following script shows how to query for input using the bundled copy of CocoaDialog:</p>
-<pre><code>#!/bin/bash
-
-CD=&quot;CocoaDialog.app/Contents/MacOS/CocoaDialog&quot;
-
-rv=`$CD yesno-msgbox --string-output`
-$CD ok-msgbox --no-cancel --text &quot;You pressed $rv&quot;
-</code></pre><p>This application will present the user with an alert and several buttons. When the user presses one of the buttons, a feedback dialog is generated notifying the user which button he pressed. While this particular script accomplishes nothing, it serves as a basic example of how to add interactive elements to the script.</p>
 <h3 id="creating-a-status-menu-app">Creating a Status Menu app</h3>
 <p><img src="images/interface_statusmenu2.png" width="315" style="float: right; margin: 20px;"></p>
 <p>Platypus-generated apps with <strong>Interface</strong> set to <strong>Status Menu</strong> show a Status Item in the menu bar when launched. When the item is pressed, a menu is opened, the script is executed and each line of output is shown as a menu item in the menu.</p>
