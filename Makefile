@@ -21,14 +21,14 @@ all: build_unsigned
 release: build_signed archives sparkle size
 
 clean:
-	xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
 	xcodebuild clean
 	rm -rf $(BUILD_DIR)/*
 
 build_signed:
 	@echo Building $(APP_NAME) version $(VERSION) \(signed\)
-	mkdir -p $(BUILD_DIR)
-	xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
 	xcodebuild -parallelizeTargets \
         -project "$(XCODE_PROJ)" \
         -target "$(APP_NAME)" \
@@ -39,8 +39,8 @@ build_signed:
 
 build_unsigned:
 	@echo Building $(APP_NAME) version $(VERSION) \(unsigned\)
-	mkdir -p $(BUILD_DIR)
-	xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
 	xcodebuild -parallelizeTargets \
         -project "$(XCODE_PROJ)" \
         -target "$(APP_NAME)" \
@@ -74,7 +74,7 @@ size:
 
 sparkle:
 	@echo Generating Sparkle signature
-	ruby "Sparkle/sign_update.rb" "$(BUILD_DIR)/$(APP_ZIP_NAME)" "Sparkle/dsa_priv.pem"
+	bin/Sparkle/sign_update "$(BUILD_DIR)/$(APP_ZIP_NAME)"
 
 clt_tests:
 	@echo Running CLT tests
