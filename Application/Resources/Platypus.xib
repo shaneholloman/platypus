@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24412" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24412"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -742,13 +742,13 @@ DQ
                             <menuItem isSeparatorItem="YES" id="143">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Donate to Support Platypus" id="11098">
+                            <menuItem title="Donate to Support Platypus" image="dollarsign" catalog="system" id="11098">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openDonations:" target="335" id="11101"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="BSD License" id="11096">
+                            <menuItem title="BSD License" image="bubble.left.and.text.bubble.right" catalog="system" id="11096">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openLicense:" target="335" id="11102"/>
@@ -1254,12 +1254,12 @@ CA
                 <menuItem title="Help" id="573">
                     <menu key="submenu" title="Help" id="572">
                         <items>
-                            <menuItem title="Platypus Documentation" keyEquivalent="?" toolTip="Open the Platypus Documentation file" id="574">
+                            <menuItem title="Platypus Documentation" image="NSTouchBarBookmarksTemplate" keyEquivalent="?" toolTip="Open the Platypus Documentation file" id="574">
                                 <connections>
                                     <action selector="showHelp:" target="335" id="575"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Man Page for Command Line Tool" toolTip="View the man page for the platypus command line tool" id="1162">
+                            <menuItem title="Man Page for Command Line Tool" image="hand.raised.square.on.square" catalog="system" toolTip="View the man page for the platypus command line tool" id="1162">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showManPage:" target="335" id="11217"/>
@@ -1268,19 +1268,19 @@ CA
                             <menuItem isSeparatorItem="YES" id="11158">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="BSD License" id="11105">
+                            <menuItem title="BSD License" image="bubble.left.and.text.bubble.right" catalog="system" id="11105">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openLicense:" target="335" id="11108"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Platypus Website" toolTip="Visit the Platypus website" id="5634">
+                            <menuItem title="Platypus Website" image="globe" catalog="system" toolTip="Visit the Platypus website" id="5634">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openWebsite:" target="335" id="5635"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Platypus on GitHub" toolTip="Visit the Platypus GitHub site" id="gaW-DK-3fq">
+                            <menuItem title="Platypus on GitHub" image="barcode" catalog="system" toolTip="Visit the Platypus GitHub site" id="gaW-DK-3fq">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openGitHubWebsite:" target="335" id="9k1-Ne-mfY"/>
@@ -1289,7 +1289,7 @@ CA
                             <menuItem isSeparatorItem="YES" id="11157">
                                 <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                             </menuItem>
-                            <menuItem title="Donate to Support Platypus Development" id="11103">
+                            <menuItem title="Donate to Support Platypus Development" image="dollarsign" catalog="system" id="11103">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="openDonations:" target="335" id="11107"/>
@@ -2933,6 +2933,12 @@ DQ
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="NSRemoveTemplate" width="18" height="5"/>
         <image name="NSStopProgressTemplate" width="17" height="16"/>
+        <image name="NSTouchBarBookmarksTemplate" width="22" height="18"/>
         <image name="PlatypusDefault" width="256" height="256"/>
+        <image name="barcode" catalog="system" width="16" height="12"/>
+        <image name="bubble.left.and.text.bubble.right" catalog="system" width="22" height="17"/>
+        <image name="dollarsign" catalog="system" width="12" height="17"/>
+        <image name="globe" catalog="system" width="15" height="15"/>
+        <image name="hand.raised.square.on.square" catalog="system" width="17" height="16"/>
     </resources>
 </document>
