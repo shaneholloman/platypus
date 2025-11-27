@@ -19,14 +19,16 @@
 * Update Applescript input example to Python, instead of Perl
 * Make Status Menu from script generation non-blocking
 * Upgrade Sparkle version
-
-* Update FAQ to answer question wrt relative interpreter path / bundling own interpreter
-* Create more automated tests for command line tool and document existing tests
+* Convert MainMenu.nib to XML format
+* platypus.rb brew formula to install command line tool
 * Fix selection change when item is deleted from the Bundled Files List
 * Performance optimization in the app build process (precompiled nib)
-* Harden CI testing for this old project
-* Ensure flattened nibs in Platypus.app (except for MainMenu.nib from ScriptExec)
-* Bundle ScriptExec binary into Mach-O executable (or base64 encode to obfuscate) to ensure that Apple's annoying notarization works.
-* platypus.rb brew formula to install command line tool
-* Add GitHub action to test install of platypus brew formula
+
+
+DONE * Harden CI testing for this old project
+DONE * Create more automated tests for command line tool and document existing tests
+
+* Update FAQ to answer question wrt relative interpreter path / bundling own interpreter
+* Base64-encode ScriptExec binary to ensure that Apple's annoying notarization works.
+* Add GitHub action to test install of platypus command line tool
 * Update Uninstall Platypus script

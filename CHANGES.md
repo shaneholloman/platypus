@@ -6,6 +6,7 @@
 * Better support for Dark Mode
 * Platypus now requires macOS 11 "Big Sur" or later
 * Preferences now named Settings according to new macOS convention
+* Modernized codebase
 
 ### For 5.4.1 - 22/10/2022
 

@@ -16,11 +16,16 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - run: gem install xcpretty
       - name: Build app
         run: |
           make build_unsigned | xcpretty -c && exit ${PIPESTATUS[0]}
+      - name: Test command line tool install
+        run: |
+          cd products/Platypus.app/Contents/Resources
+          sudo sh InstallCommandLineTool.sh
+          platypus --version
       - name: Install Python
         uses: actions/setup-python@v5
         with:
