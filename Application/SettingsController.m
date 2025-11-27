@@ -29,7 +29,7 @@
 */
 
 #import "SettingsController.h"
-#import <sys/stat.h>
+
 #import "Alerts.h"
 #import "STPrivilegedTask.h"
 #import "Common.h"

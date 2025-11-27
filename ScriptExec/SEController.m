@@ -31,9 +31,6 @@
 /* This is the source code to the main controller for the binary
  bundled into Platypus-generated applications */
 
-#import <Security/Authorization.h>
-#import <sys/stat.h>
-
 #import "Common.h"
 #import "SEController.h"
 #import "NSColor+HexTools.h"

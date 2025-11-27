@@ -20,15 +20,17 @@ all: build_unsigned
 
 release: build_signed archives sparkle size
 
+clt: clean scriptexec cli
+
 clean:
-	xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
 	xcodebuild clean
 	rm -rf $(BUILD_DIR)/*
 
 build_signed:
 	@echo Building $(APP_NAME) version $(VERSION) \(signed\)
-	mkdir -p $(BUILD_DIR)
-	xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
 	xcodebuild -parallelizeTargets \
         -project "$(XCODE_PROJ)" \
         -target "$(APP_NAME)" \
@@ -39,8 +41,8 @@ build_signed:
 
 build_unsigned:
 	@echo Building $(APP_NAME) version $(VERSION) \(unsigned\)
-	mkdir -p $(BUILD_DIR)
-	xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
 	xcodebuild -parallelizeTargets \
         -project "$(XCODE_PROJ)" \
         -target "$(APP_NAME)" \
@@ -50,6 +52,34 @@ build_unsigned:
         CODE_SIGNING_REQUIRED=NO \
         CODE_SIGNING_ALLOWED=NO \
         clean \
+        build
+
+cli:
+	@echo Building platypus_clt version $(VERSION) \(unsigned\)
+	@mkdir -p $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	xcodebuild -parallelizeTargets \
+        -project "$(XCODE_PROJ)" \
+        -target "platypus_clt" \
+        -configuration "Deployment" \
+        CONFIGURATION_BUILD_DIR="$(BUILD_DIR)" \
+        CODE_SIGN_IDENTITY="" \
+        CODE_SIGNING_REQUIRED=NO \
+        CODE_SIGNING_ALLOWED=NO \
+        build
+
+scriptexec:
+	@echo Building ScriptExec version $(VERSION) \(unsigned\)
+	@mkdir -p $(BUILD_DIR)
+	@xattr -w com.apple.xcode.CreatedByBuildSystem true $(BUILD_DIR)
+	xcodebuild -parallelizeTargets \
+        -project "$(XCODE_PROJ)" \
+        -target "ScriptExec" \
+        -configuration "Deployment" \
+        CONFIGURATION_BUILD_DIR="$(BUILD_DIR)" \
+        CODE_SIGN_IDENTITY="" \
+        CODE_SIGNING_REQUIRED=NO \
+        CODE_SIGNING_ALLOWED=NO \
         build
 
 archives:
@@ -74,17 +104,8 @@ size:
 
 sparkle:
 	@echo Generating Sparkle signature
-	ruby "Sparkle/sign_update.rb" "$(BUILD_DIR)/$(APP_ZIP_NAME)" "Sparkle/dsa_priv.pem"
+	bin/Sparkle/sign_update "$(BUILD_DIR)/$(APP_ZIP_NAME)"
 
 clt_tests:
-	@echo Running CLT tests
-	xcodebuild -parallelizeTargets \
-	-project "$(XCODE_PROJ)" \
-	-target $(TEST_TARGET) \
-	-configuration "Deployment" \
-	CONFIGURATION_BUILD_DIR="products" \
-	CODE_SIGN_IDENTITY="" \
-	CODE_SIGNING_REQUIRED=NO \
-	CODE_SIGNING_ALLOWED=NO \
-	clean \
-	build
+	@echo Running commnd line tool tests
+	python3 -m pytest

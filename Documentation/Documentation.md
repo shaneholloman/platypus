@@ -2,7 +2,7 @@
 
 # Documentation for Platypus 5.5.0
 
-Last updated on June 27th, 2025. The latest version of this document can be found [here](https://sveinbjorn.org/platypus_documentation).
+Last updated on November 27th, 2025 by [Sveinbjorn Thordarson](mailto:sveinbjorn@sveinbjorn.org). The latest version of this document can be found [here](https://sveinbjorn.org/platypus_documentation).
 
 
 ## Introduction
@@ -14,11 +14,9 @@ Platypus is a developer tool that creates native macOS application wrappers arou
 
 Platypus was first released in 2003 and has since gone through many significant updates. It is written in Objective-C/Cocoa and is free, open-source software distributed under a BSD license.
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="float: right; margin-left: 40px;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="BDT58J7HYKAEE">
-<input type="image" src="https://www.paypalobjects.com/WEBSCR-640-20110306-1/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal" width="92" height="26">
-</form>
+<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BDT58J7HYKAEE">
+<img align="right" src="https://www.paypalobjects.com/WEBSCR-640-20110306-1/en_US/i/btn/btn_donate_LG.gif" >
+</a>
 
 While Platypus is free, it is the product of countless hours of work over the last twenty years or so. **If Platypus makes your life easier, please [make a donation](https://sveinbjorn.org/donations) to support continued development.**
 
@@ -41,7 +39,7 @@ That being said, you may be able to add some interactive GUI elements using some
 
 ### System Requirements
 
-Both Platypus and the applications it generates require **macOS 10.13** or later and are provided as **64-bit ARM/Intel** binaries. If you want to target macOS 10.8-10.12, use [version 5.3](https://sveinbjorn.org/files/software/platypus/platypus5.3.zip).
+Both Platypus and the applications it generates require **macOS 11** or later and are provided as **64-bit ARM/Intel** binaries. If you want to target macOS 10.8-10.15, use [version 5.4.1](https://sveinbjorn.org/files/software/platypus/platypus5.3.zip).
 If you want to target 10.6 and/or 32-bit Intel systems,
 [version 4.9](https://sveinbjorn.org/files/software/platypus/platypus4.9.zip) continues to work just fine.
 

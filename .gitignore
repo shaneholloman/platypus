@@ -31,3 +31,4 @@ Tests/*.app
 Tests/args.txt
 Platypus-*
 .claude
+Tests/__pycache__/

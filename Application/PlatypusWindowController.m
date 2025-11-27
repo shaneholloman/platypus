@@ -170,7 +170,7 @@
     [self updateInterfaceTypeMenu:NSMakeSize(16, 16)];
     
     // Main window accepts dragged text and dragged files
-    [[self window] registerForDraggedTypes:@[NSFilenamesPboardType, NSStringPboardType]];
+    [[self window] registerForDraggedTypes:@[NSFilenamesPboardType, NSPasteboardTypeString]];
     
     // If we haven't already loaded a profile via openfile delegate method
     // we set all fields to their defaults. Any profile must contain a name
@@ -956,9 +956,9 @@
         return YES;
     }
     // String
-    else if ([[pboard types] containsObject:NSStringPboardType]) {
+    else if ([[pboard types] containsObject:NSPasteboardTypeString]) {
         // Create a new script file with the dropped string, load it
-        NSString *draggedString = [pboard stringForType:NSStringPboardType];
+        NSString *draggedString = [pboard stringForType:NSPasteboardTypeString];
         NSString *newScriptPath = [self createNewScript:draggedString];
         if (newScriptPath) {
             [self loadScript:newScriptPath];
@@ -973,7 +973,7 @@
     
     if ([[[sender draggingPasteboard] types] containsObject:NSFilenamesPboardType]) {
         return NSDragOperationLink;
-    } else if ([[[sender draggingPasteboard] types] containsObject:NSStringPboardType]) {
+    } else if ([[[sender draggingPasteboard] types] containsObject:NSPasteboardTypeString]) {
         return NSDragOperationCopy;
     }
     
@@ -982,7 +982,7 @@
 
 // If we just created a file with a dragged string, we open it in default editor
 - (void)concludeDragOperation:(id <NSDraggingInfo> )sender {
-    if ([[[sender draggingPasteboard] types] containsObject:NSStringPboardType]) {
+    if ([[[sender draggingPasteboard] types] containsObject:NSPasteboardTypeString]) {
         [self editScript:self];
     }
 }

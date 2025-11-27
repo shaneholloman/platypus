@@ -303,7 +303,7 @@ NSUInteger IFIndexOfElementInImageSource(CGImageSourceRef imageSourceRef, AGIcon
 						  hasAlpha:YES
 						  isPlanar:NO
 					colorSpaceName:NSDeviceRGBColorSpace
-					  bitmapFormat:NSAlphaFirstBitmapFormat
+                                       bitmapFormat:NSBitmapFormatAlphaFirst
 					   bytesPerRow:pixelsWide * 4
 					  bitsPerPixel:32] autorelease];
 	

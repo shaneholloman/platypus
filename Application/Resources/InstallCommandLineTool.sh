@@ -2,7 +2,6 @@
 #
 # InstallCommandLineTool.sh
 # Platypus
-#
 
 REAL_USER_ID=`/usr/bin/id -r -u`
 

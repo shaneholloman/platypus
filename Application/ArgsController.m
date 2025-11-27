@@ -196,7 +196,7 @@
     }
     
     // File args
-    if ([isDroppableCheckbox state] == NSOnState) {
+    if ([isDroppableCheckbox state] == NSControlStateValueOn) {
         NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:@" [files ...]" attributes:defaultAttrs];
         [cmdString appendAttributedString:attrStr];
     }

@@ -429,7 +429,7 @@
 	<key>CFBundleExecutable</key>
 	<string>Platypus</string>
 	<key>CFBundleGetInfoString</key>
-	<string>© 2003-2025 Sveinbjorn Thordarson.</string>
+	<string>© 2003-2025 Sveinbjorn Thordarson. BSD License.</string>
 	<key>CFBundleIconFile</key>
 	<string>PlatypusAppIcon</string>
 	<key>CFBundleIdentifier</key>
@@ -445,13 +445,13 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1293</string>
+	<string>1304</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.13</string>
+	<string>11.5</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2003-2025 Sveinbjorn Thordarson.</string>
+	<string>© 2003-2025 Sveinbjorn Thordarson. BSD License.</string>
 	<key>NSMainNibFile</key>
 	<string>Platypus</string>
 	<key>NSPrincipalClass</key>
@@ -462,8 +462,6 @@
 	<true/>
 	<key>SUFeedURL</key>
 	<string>https://sveinbjorn.org/files/appcasts/PlatypusAppcast.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
 	<key>SUPublicEDKey</key>
 	<string>XqfjBk0i1aF2FrZQfUIcpU+h7151345+3pSN9Bs7GwI=</string>
 	<key>UTExportedTypeDeclarations</key>

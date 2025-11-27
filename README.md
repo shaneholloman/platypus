@@ -50,7 +50,7 @@ Platypus is free, open source software and has been continuously developed
 and maintained for over 20 years. **If you find this program useful, 
 please [make a donation](https://sveinbjorn.org/donations).**
 
-* **[⬇ Download Platypus 5.5.0](https://sveinbjorn.org/files/software/platypus.zip)** 
+* **[⬇ Download Platypus 5.4.1](https://sveinbjorn.org/files/software/platypus.zip)** 
 (Intel/ARM 64-bit, 10.11 or later, ~4.5 MB)
 
 Platypus can also be installed via [Homebrew](https://brew.sh) (may not be latest version):
@@ -105,19 +105,18 @@ The resulting application bundle is created in the `products` directory.
 ## Some notes on the code
 
 Platypus is very old software, dating back to the early days of 
-Mac OS X, around 2003, when I was first learning to use Objective-C 
+Mac OS X, around 2003, when I was first learning Objective-C 
 and the Cocoa APIs. I made many beginner mistakes, some of which remain 
 in the structure of the code. This software has since gone through 
-about three dozen significant versions. It has been patched, bugfixed,
+dozens of significant versions. It has been patched, bugfixed,
 streamlined to include new features and was transitioned over to 
-modern Objective-C some years ago. It's not how I would write it today.
+modern Objective-C many years ago. It's not how I would write it today.
 
 With these caveats in mind, here is the BSD-licensed source code to Platypus.
 
 ## BSD License 
 
-Copyright (c) 2003-2025 Sveinbjorn Thordarson 
-&lt;<a href="mailto:">sveinbjorn@sveinbjorn.org</a>&gt;
+Copyright (c) 2003-2025 [Sveinbjorn Thordarson](mailto:sveinbjorn@sveinbjorn.org)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

@@ -2,8 +2,6 @@
 #
 # UninstallCommandLineTool.sh
 # Platypus
-#
-# Variables defined in Common.h
 
 echo "Uninstalling command line tool"
 

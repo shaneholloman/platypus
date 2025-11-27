@@ -84,13 +84,13 @@ typedef NS_ENUM(NSUInteger, PlatypusIconPreset) {
 
 - (IBAction)copyIconPath:(id)sender {
     
-    [[NSPasteboard generalPasteboard] declareTypes:@[NSStringPboardType] owner:self];
-    [[NSPasteboard generalPasteboard] setString:[self icnsFilePath] forType:NSStringPboardType];
+    [[NSPasteboard generalPasteboard] declareTypes:@[NSPasteboardTypeString] owner:self];
+    [[NSPasteboard generalPasteboard] setString:[self icnsFilePath] forType:NSPasteboardTypeString];
 }
 
 - (IBAction)copyIcon:(id)sender {
-    [[NSPasteboard generalPasteboard] declareTypes:@[NSTIFFPboardType] owner:self];
-    [[NSPasteboard generalPasteboard] setData:[[iconImageView image] TIFFRepresentation] forType:NSTIFFPboardType];
+    [[NSPasteboard generalPasteboard] declareTypes:@[NSPasteboardTypeTIFF] owner:self];
+    [[NSPasteboard generalPasteboard] setData:[[iconImageView image] TIFFRepresentation] forType:NSPasteboardTypeTIFF];
 }
 
 - (IBAction)pasteIcon:(id)sender {

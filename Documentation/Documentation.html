@@ -327,17 +327,14 @@ pre code, pre tt {
     <div class="container">
       <div class="body-content"><p><img style="float: right; margin-left: 30px; margin-bottom: 20px;" width="128" height="128" src="images/platypus.png"  align="right"></p>
 <h1 id="documentation-for-platypus-5-5-0">Documentation for Platypus 5.5.0</h1>
-<p>Last updated on June 27th, 2025. The latest version of this document can be found <a href="https://sveinbjorn.org/platypus_documentation">here</a>.</p>
+<p>Last updated on November 27th, 2025 by <a href="mailto:sveinbjorn@sveinbjorn.org">Sveinbjorn Thordarson</a>. The latest version of this document can be found <a href="https://sveinbjorn.org/platypus_documentation">here</a>.</p>
 <h2 id="introduction">Introduction</h2>
 <h3 id="what-is-platypus-">What is Platypus?</h3>
 <p>Platypus is a developer tool that creates native macOS application wrappers around scripts. Scripts are thus transformed into regular applications that can be launched from the window environment – e.g. the Finder or the Dock – without requiring use of the command line interface.</p>
 <p>Platypus was first released in 2003 and has since gone through many significant updates. It is written in Objective-C/Cocoa and is free, open-source software distributed under a BSD license.</p>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="float: right; margin-left: 40px;">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="BDT58J7HYKAEE">
-<input type="image" src="https://www.paypalobjects.com/WEBSCR-640-20110306-1/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal" width="92" height="26">
-</form>
-
+<p><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BDT58J7HYKAEE">
+<img align="right" src="https://www.paypalobjects.com/WEBSCR-640-20110306-1/en_US/i/btn/btn_donate_LG.gif" >
+</a></p>
 <p>While Platypus is free, it is the product of countless hours of work over the last twenty years or so. <strong>If Platypus makes your life easier, please <a href="https://sveinbjorn.org/donations">make a donation</a> to support continued development.</strong></p>
 <p>I am happy to respond to feature requests, bug reports and questions concerning Platypus which are not addressed in this document, but I cannot answer queries about the particulars of individual scripting languages. Productive use of Platypus assumes that you are competent in your language of choice and understand the UNIX shell environment.</p>
 <h3 id="how-does-platypus-work-">How does Platypus work?</h3>
@@ -347,7 +344,7 @@ pre code, pre tt {
 <p>Platypus is <strong>not</strong> a set of bindings between the native macOS APIs and scripting languages. It is not a full GUI development environment and is not intended for creating substantial applications with complex and dynamic user interaction. If you want to create advanced macOS applications, you should learn to program using the Cocoa APIs. Platypus is not and never will be a substitute for learning to use the native application programming interfaces.</p>
 <p>That being said, you may be able to add some interactive GUI elements using something like <a href="https://www.bluem.net/en/projects/pashua/">Pashua</a> or <a href="#prompting-for-input-via-osascript-applescript">AppleScript</a>.</p>
 <h3 id="system-requirements">System Requirements</h3>
-<p>Both Platypus and the applications it generates require <strong>macOS 10.13</strong> or later and are provided as <strong>64-bit ARM/Intel</strong> binaries. If you want to target macOS 10.8-10.12, use <a href="https://sveinbjorn.org/files/software/platypus/platypus5.3.zip">version 5.3</a>.
+<p>Both Platypus and the applications it generates require <strong>macOS 11</strong> or later and are provided as <strong>64-bit ARM/Intel</strong> binaries. If you want to target macOS 10.8-10.15, use <a href="https://sveinbjorn.org/files/software/platypus/platypus5.3.zip">version 5.4.1</a>.
 If you want to target 10.6 and/or 32-bit Intel systems,
 <a href="https://sveinbjorn.org/files/software/platypus/platypus4.9.zip">version 4.9</a> continues to work just fine.</p>
 <h3 id="credits">Credits</h3>
@@ -382,7 +379,7 @@ If you want to target 10.6 and/or 32-bit Intel systems,
 <p><img src="images/interface_progressbar.png" width="438"></p>
 <h4 id="text-window">Text Window</h4>
 <p>Shows a window with a text view containing script output. Please note that this text view is <em>not</em> a full, interactive terminal session, and cannot be used to prompt for user input via <code>stdin</code>. It does not support any of the standard terminal commands and cannot be used to display ncurses-based interfaces.</p>
-<p>The styling of the text view can configured under <strong>Text Settings</strong>.</p>
+<p>The styling of the text view can be configured under <strong>Text Settings</strong>.</p>
 <p><img src="images/interface_textwindow.png" width="469"></p>
 <h4 id="web-view">Web View</h4>
 <p>Output from the script is rendered as HTML in a WebView window. This allows you to use HTML formatting and other web technologies to present script output to the user.</p>

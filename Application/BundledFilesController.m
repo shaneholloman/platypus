@@ -300,8 +300,8 @@
         }
     }
 
-    [[NSPasteboard generalPasteboard] declareTypes:@[NSStringPboardType] owner:self];
-    [[NSPasteboard generalPasteboard] setString:copyStr forType:NSStringPboardType];
+    [[NSPasteboard generalPasteboard] declareTypes:@[NSPasteboardTypeString] owner:self];
+    [[NSPasteboard generalPasteboard] setString:copyStr forType:NSPasteboardTypeString];
 }
 
 - (IBAction)addFilesToList:(id)sender {

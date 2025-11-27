@@ -44,7 +44,6 @@
 		F436471421A1BD9D00A8749D /* platypus.1 in Resources */ = {isa = PBXBuildFile; fileRef = F45BB35A219224E900DC7A00 /* platypus.1 */; };
 		F436471521A1BDA600A8749D /* platypus.man.html in Resources */ = {isa = PBXBuildFile; fileRef = F45BB35C219224E900DC7A00 /* platypus.man.html */; };
 		F43C431126876F250013914C /* SEController.m in Sources */ = {isa = PBXBuildFile; fileRef = F43C431026876F250013914C /* SEController.m */; };
-		F445EA7B14FAB93300DCCDB3 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = F445EA7A14FAB93300DCCDB3 /* dsa_pub.pem */; };
 		F44A77431C1882DA003CCA7A /* InstallCommandLineTool.sh in Resources */ = {isa = PBXBuildFile; fileRef = F44A77401C1882DA003CCA7A /* InstallCommandLineTool.sh */; };
 		F44A77441C1882DA003CCA7A /* UninstallCommandLineTool.sh in Resources */ = {isa = PBXBuildFile; fileRef = F44A77411C1882DA003CCA7A /* UninstallCommandLineTool.sh */; };
 		F44A77451C1882DA003CCA7A /* UninstallPlatypus.sh in Resources */ = {isa = PBXBuildFile; fileRef = F44A77421C1882DA003CCA7A /* UninstallPlatypus.sh */; };
@@ -192,14 +191,13 @@
 		F4051D9E1C1B5AF900587F1F /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		F4051DA71C1C812600587F1F /* STReverseDNSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STReverseDNSTextField.h; path = Shared/STReverseDNSTextField.h; sourceTree = "<group>"; };
 		F4051DA81C1C812600587F1F /* STReverseDNSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STReverseDNSTextField.m; path = Shared/STReverseDNSTextField.m; sourceTree = "<group>"; };
+		F41008072ECB270D000134ED /* TODO.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TODO.md; sourceTree = "<group>"; };
 		F4146CCE2149E76000BB36AD /* Interpreter_AWK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Interpreter_AWK.png; sourceTree = "<group>"; };
-		F42A93E52178485C00C40D46 /* args.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = args.py; sourceTree = "<group>"; };
 		F42E2EAA20A9E001003D2E89 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		F43C430C26876F060013914C /* img1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img1.png; sourceTree = "<group>"; };
 		F43C430D26876F060013914C /* img2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img2.png; sourceTree = "<group>"; };
 		F43C431026876F250013914C /* SEController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SEController.m; path = ScriptExec/SEController.m; sourceTree = "<group>"; };
 		F442E00B1EA38C7100BAD80C /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		F445EA7A14FAB93300DCCDB3 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Sparkle/dsa_pub.pem; sourceTree = "<group>"; };
 		F445EA7D14FABE6500DCCDB3 /* dsa_priv.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = dsa_priv.pem; sourceTree = "<group>"; };
 		F445EA7E14FABE6500DCCDB3 /* dsa_pub.pem */ = {isa = PBXFileReference; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		F445EA8014FABE6500DCCDB3 /* PlatypusAppcast.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PlatypusAppcast.xml; sourceTree = "<group>"; };
@@ -251,6 +249,10 @@
 		F45BB360219224E900DC7A00 /* build_cat2html.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_cat2html.sh; sourceTree = "<group>"; };
 		F45BB361219224E900DC7A00 /* make_man_html.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = make_man_html.sh; sourceTree = "<group>"; };
 		F45BB3672192397900DC7A00 /* Preferences.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Preferences.icns; sourceTree = "<group>"; };
+		F469CB342ED88E5200B72BC9 /* args.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = args.py; sourceTree = "<group>"; };
+		F469CB352ED88E5200B72BC9 /* conftest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = conftest.py; sourceTree = "<group>"; };
+		F469CB362ED88E5200B72BC9 /* test_clt.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test_clt.py; sourceTree = "<group>"; };
+		F469CB372ED8C46B00B72BC9 /* platypus.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = platypus.rb; sourceTree = "<group>"; };
 		F46EF84E13C3F36900E4C0E4 /* Examples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Examples; sourceTree = "<group>"; };
 		F4714B592BDC3C7B00827A48 /* CHANGES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGES.md; sourceTree = "<group>"; };
 		F471ED1D122DF096001F4761 /* PlatypusAppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PlatypusAppIcon.icns; sourceTree = "<group>"; };
@@ -336,13 +338,11 @@
 		F4AF785C14D1E5F200544C1B /* STDragWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STDragWebView.m; path = Shared/STDragWebView.m; sourceTree = "<group>"; };
 		F4B4F70F2230902C00F3C073 /* MutableDictProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MutableDictProxy.h; path = Shared/MutableDictProxy.h; sourceTree = "<group>"; };
 		F4B4F7102230902C00F3C073 /* MutableDictProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MutableDictProxy.m; path = Shared/MutableDictProxy.m; sourceTree = "<group>"; };
-		F4B87C581B403A6E00F4B8BE /* build_release.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_release.sh; sourceTree = "<group>"; };
 		F4C19A831BD1BFAB00F411BD /* STDragImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = STDragImageView.h; path = Shared/STDragImageView.h; sourceTree = "<group>"; };
 		F4C19A841BD1BFAB00F411BD /* STDragImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = STDragImageView.m; path = Shared/STDragImageView.m; sourceTree = "<group>"; };
 		F4D0F22F1C1DCEEE0065AD25 /* NSResponderNotifyingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSResponderNotifyingTableView.h; path = Shared/NSResponderNotifyingTableView.h; sourceTree = "<group>"; };
 		F4D0F2301C1DCEEE0065AD25 /* NSResponderNotifyingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSResponderNotifyingTableView.m; path = Shared/NSResponderNotifyingTableView.m; sourceTree = "<group>"; };
 		F4DC074F11F629A40043764E /* Documentation.html */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.html.documentation; path = Documentation.html; sourceTree = "<group>"; };
-		F4DC738321644F4700D79823 /* clt_tests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = clt_tests.py; sourceTree = "<group>"; };
 		F4E1F6FC11F758FB007EE2E3 /* platypus_clt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = platypus_clt; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4E482BF28BD61BC00F99216 /* Interpreter_Dart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Interpreter_Dart.png; sourceTree = "<group>"; };
 		F4E5E4011EE2F22E0072EACE /* Documentation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Documentation.md; sourceTree = "<group>"; };
@@ -430,7 +430,9 @@
 				F4911FC7260A5D53004AC8CD /* macos.yml */,
 				F4975D7A1B2E462A0099D16E /* README.md */,
 				F4714B592BDC3C7B00827A48 /* CHANGES.md */,
+				F41008072ECB270D000134ED /* TODO.md */,
 				F442E00B1EA38C7100BAD80C /* LICENSE.txt */,
+				F469CB372ED8C46B00B72BC9 /* platypus.rb */,
 				F479672B224EB3EF00CA0746 /* Makefile */,
 				F4F14CBB1C64264D002A2402 /* Scripts */,
 				F4DC074D11F629A40043764E /* Documentation */,
@@ -455,7 +457,6 @@
 				F4975DB91B2E71FC0099D16E /* Editor.xib */,
 				F4975DBC1B2E71FC0099D16E /* ShellCommandWindow.xib */,
 				F4975DBD1B2E71FC0099D16E /* SyntaxChecker.xib */,
-				F445EA7A14FAB93300DCCDB3 /* dsa_pub.pem */,
 				F46EF84E13C3F36900E4C0E4 /* Examples */,
 				F44A77461C1882E0003CCA7A /* Scripts */,
 				F4050E3305DAF44F00BE4CA5 /* Icons */,
@@ -858,8 +859,9 @@
 		F4DC738221644F4700D79823 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				F4DC738321644F4700D79823 /* clt_tests.py */,
-				F42A93E52178485C00C40D46 /* args.py */,
+				F469CB352ED88E5200B72BC9 /* conftest.py */,
+				F469CB362ED88E5200B72BC9 /* test_clt.py */,
+				F469CB342ED88E5200B72BC9 /* args.py */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -888,7 +890,6 @@
 			isa = PBXGroup;
 			children = (
 				F497C7EB2205CE8400F68637 /* Makefile */,
-				F4B87C581B403A6E00F4B8BE /* build_release.sh */,
 				F4F14CAF1C640857002A2402 /* make_examples.pl */,
 			);
 			name = Scripts;
@@ -946,7 +947,6 @@
 				F4E1F6F911F758FB007EE2E3 /* Sources */,
 				F4E1F6FA11F758FB007EE2E3 /* Frameworks */,
 				F4FB337514FBDAD500BAECEB /* Run Script to Create Man Page HTML document */,
-				F42A93D221781BCB00C40D46 /* Create symlink in Tests folder */,
 			);
 			buildRules = (
 			);
@@ -964,7 +964,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1640;
+				LastUpgradeCheck = 2610;
 				ORGANIZATIONNAME = "Sveinbjorn Thordarson";
 				TargetAttributes = {
 					F4E1F6FB11F758FB007EE2E3 = {
@@ -1043,7 +1043,6 @@
 				F45B1F231FF5617500A935D7 /* Interpreter_Ruby.png in Resources */,
 				F4975DBE1B2E71FC0099D16E /* Editor.xib in Resources */,
 				F45B1F1A1FF5617500A935D7 /* Interpreter_Expect.png in Resources */,
-				F445EA7B14FAB93300DCCDB3 /* dsa_pub.pem in Resources */,
 				F45B1F221FF5617500A935D7 /* Interpreter_zsh.png in Resources */,
 				F4FB338114FBFC7C00BAECEB /* License.html in Resources */,
 			);
@@ -1094,25 +1093,6 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\nBUILD_NUMBER=`git rev-list HEAD | wc -l`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILD_NUMBER\" \"${INFOPLIST_FILE}\"\nif [ \"$?\" -ne 0 ] ; then\n    echo \"warning:Error incrementing CFBundleVersion\"\nfi\n";
 		};
-		F42A93D221781BCB00C40D46 /* Create symlink in Tests folder */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Create symlink in Tests folder";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Create symlink to the binary in the Tests folder\n# so tests invoke latest built version of CLT\nrm \"${PROJECT_DIR}/Tests/platypus\"\nln -s \"${TARGET_BUILD_DIR}/platypus_clt\" \"${PROJECT_DIR}/Tests/platypus\"\n\n";
-		};
 		F4302B7B21C5A04A001C8BEC /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -1148,7 +1128,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#exit 0\n# We need to sign all binaries within Sparkle framework for update installation to work\n# Only do this for release builds so CI testing works\nif [ \"${CODE_SIGNING_REQUIRED}\" != \"YES\" ]; then\n  exit 0\nfi\n\n\nLOCATION1=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app/Contents/MacOS/Updater\"\nLOCATION2=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate\"\nLOCATION3=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc/Contents/MacOS/Downloader\"\nLOCATION4=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework\"\nLOCATION5=\"${BUILT_PRODUCTS_DIR}/Platypus.app\"\n\nIDENTITY=\"16A0188A9D74911B21953A33684437F70902BC30\"\n#${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#echo $IDENTITY\n\n\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION1\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION2\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION3\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION4\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION5\"\n\n";
+			shellScript = "exit 0\n# We need to sign all binaries within Sparkle framework for update installation to work\n# Only do this for release builds so CI testing works\nif [ \"${CODE_SIGNING_REQUIRED}\" != \"YES\" ]; then\n  exit 0\nfi\n\n\nLOCATION1=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app/Contents/MacOS/Updater\"\nLOCATION2=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate\"\nLOCATION3=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc/Contents/MacOS/Downloader\"\nLOCATION4=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework\"\nLOCATION5=\"${BUILT_PRODUCTS_DIR}/Platypus.app\"\n\nIDENTITY=\"16A0188A9D74911B21953A33684437F70902BC30\"\n#${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#echo $IDENTITY\n\n\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION1\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION2\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION3\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION4\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION5\"\n\n";
 		};
 		F4DC737D21644E0400D79823 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1192,7 +1172,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Create HTML document from man page\n/usr/bin/man CLT/man/platypus.1 | CLT/man/cat2html/cat2html > CLT/man/platypus.man.html\n";
+			shellScript = "# Create HTML document from man page\n/usr/bin/man CLT/man/platypus.1 | CLT/man/cat2html > CLT/man/platypus.man.html\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1330,11 +1310,13 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "Application/Resources/Platypus-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Platypus;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1394,11 +1376,13 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
 				INFOPLIST_FILE = "Application/Resources/Platypus-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Platypus;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 11.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;

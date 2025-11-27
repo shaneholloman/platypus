@@ -2,9 +2,6 @@
 #
 # UninstallPlatypus.sh
 # Platypus
-#
-# Created by Sveinbjorn Thordarson 2012.
-#
 
 cd "$1"
 
