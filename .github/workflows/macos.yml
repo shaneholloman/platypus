@@ -21,6 +21,10 @@ jobs:
       - name: Build app
         run: |
           make build_unsigned | xcpretty -c && exit ${PIPESTATUS[0]}
-      # Tests require GUI environment, disabled in CI
-      #- name: Run tests
-      #  run: make clt_tests
+      - name: Run tests
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+      - run: |
+          pip3 install pytest
+          make clt_tests

@@ -77,14 +77,5 @@ sparkle:
 	bin/Sparkle/sign_update "$(BUILD_DIR)/$(APP_ZIP_NAME)"
 
 clt_tests:
-	@echo Running CLT tests
-	xcodebuild -parallelizeTargets \
-	-project "$(XCODE_PROJ)" \
-	-target $(TEST_TARGET) \
-	-configuration "Deployment" \
-	CONFIGURATION_BUILD_DIR="products" \
-	CODE_SIGN_IDENTITY="" \
-	CODE_SIGNING_REQUIRED=NO \
-	CODE_SIGNING_ALLOWED=NO \
-	clean \
-	build
+	@echo Running commnd line tool tests
+	python3 -m pytest
