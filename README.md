@@ -11,7 +11,7 @@
 **Platypus** is a developer tool that creates native Mac applications 
 from command line scripts such as shell scripts or Python, Perl, Ruby, 
 Tcl, JavaScript and PHP programs. This is done by wrapping the script in an 
-[application bundle](https://en.wikipedia.org/wiki/Bundle_(OS_X)) along 
+[application bundle](https://en.wikipedia.org/wiki/Application_bundle) along 
 with a slim app binary that runs the script.
 
 Platypus makes it easy to share scripts and programs with people who are 
@@ -50,21 +50,15 @@ Platypus is free, open source software and has been continuously developed
 and maintained for over 20 years. **If you find this program useful, 
 please [make a donation](https://sveinbjorn.org/donations).**
 
-* **[⬇ Download Platypus 5.4.1](https://sveinbjorn.org/files/software/platypus.zip)** 
-(Intel/ARM 64-bit, 10.11 or later, ~4.5 MB)
-
-Platypus can also be installed via [Homebrew](https://brew.sh) (may not be latest version):
-
-```shell
-$ brew install --cask platypus
-```
+* **[⬇ Download Platypus 5.5.0](https://sveinbjorn.org/files/software/platypus.zip)** 
+(~3.5 MB, Universal ARM/Intel 64-bit app, macOS 11 or later, Developer ID signed and notarized)
 
 ## Links
 
-* [Platypus Documentation](Documentation/Documentation.md)
+* [Platypus Documentation](https://sveinbjorn.org/files/manpages/PlatypusDocumentation.html)
 * [Platypus Website](https://sveinbjorn.org/platypus)
 * [man `platypus`](https://sveinbjorn.org/files/manpages/platypus.man.html)
-* [Platypus Appcast XML feed](https://sveinbjorn.org/files/appcasts/PlatypusAppcast.xml)
+* [Platypus Appcast XML Feed](https://sveinbjorn.org/files/appcasts/PlatypusAppcast.xml)
 * [Old Versions](https://sveinbjorn.org/files/software/platypus)
 
 ## Screenshots
@@ -96,7 +90,7 @@ Platypus lets you select one of several different user interfaces for your scrip
 To build Platypus, run the following command from the repository root 
 (requires Xcode build tools):
 
-```shell
+```bash
 $ make build_unsigned
 ```
 
@@ -105,16 +99,14 @@ The resulting application bundle is created in the `products` directory.
 ## Installing command line tool in CI environment
 
 ```bash
-curl -O https://sveinbjorn.org/files/p.zip
-unzip -q p.zip
+curl -O https://github.com/sveinbjornt/Platypus/releases/download/v5.5.0/platypus5.5.0.zip
+unzip -q platypus5.5.0.zip
 cd Platypus.app/Contents/Resources
 sudo bash InstallCommandLineTool.sh
-platypus [arguments...]
 ```
 
-This fetches the latest release version of the Platypus command line tool.
-To pin a particular version, download the zip archive for a particular
-release under [Releases](https://github.com/sveinbjornt/Platypus/releases).
+This fetches the latest release version of Platypus and installs the 
+command line tool binary to `/usr/local/bin/platypus`.
 
 ## Some notes on the code
 
@@ -126,12 +118,10 @@ dozens of significant versions. It has been patched, bugfixed,
 streamlined to include new features and was transitioned over to 
 modern Objective-C many years ago. It's not how I would write it today.
 
-With these caveats in mind, here is the BSD-licensed source code to Platypus.
-
 ## BSD License 
 
-Copyright (c) 2003-2025 [Sveinbjorn Thordarson](mailto:sveinbjorn@sveinbjorn.org)
-All rights reserved.
+Copyright (c) 2003-2025 [Sveinbjorn Thordarson](mailto:sveinbjorn@sveinbjorn.org).
+
 
 Redistribution and use in source and binary forms, with or without modification,
 are permitted provided that the following conditions are met:

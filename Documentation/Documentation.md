@@ -34,7 +34,7 @@ Platypus creates application bundles with a special executable binary that runs 
 
 Platypus is **not** a set of bindings between the native macOS APIs and scripting languages. It is not a full GUI development environment and is not intended for creating substantial applications with complex and dynamic user interaction. If you want to create advanced macOS applications, you should learn to program using the Cocoa APIs. Platypus is not and never will be a substitute for learning to use the native application programming interfaces.
 
-That being said, you may be able to add some interactive GUI elements using something like [Pashua](https://www.bluem.net/en/projects/pashua/) or [AppleScript](#prompting-for-input-via-osascript-applescript).
+That being said, you may be able to add some interactive GUI elements using something like [Pashua](https://github.com/BlueM/Pashua) or [AppleScript](#prompting-for-input-via-osascript-applescript).
 
 
 ### System Requirements
@@ -288,7 +288,7 @@ You can load a profile by selecting it from the menu, which lists all profiles i
 
 Profiles can be used with the `platypus` command line tool. This allows you to set all the settings for your application within the graphical user interface, save them as a profile and then load the settings with the command line app. This makes automation more convenient. The following command would load a profile with the command line tool and create an app from it named MyApp.app:
 
-```
+```bash
 /usr/local/bin/platypus -P myProfile.platypus MyApp.app
 ```
 
@@ -365,7 +365,7 @@ When the user selects a menu item, the script is executed again, but this time i
 
 If this seems unclear, check out the following script, which is part of the MacbethMenu Example:
 
-```
+```perl
 #!/usr/bin/perl
 
 # If 0 arguments, we show menu
@@ -423,7 +423,7 @@ STATUSICON|bundled image filename or absolute path or URL\n
 
 Scripts can also prompt for input by running AppleScript code via the `/usr/bin/osascript` program. See an example in Perl below:
 
-```
+```perl
 #!/usr/bin/perl
 
 use strict;
@@ -499,7 +499,7 @@ If you come up with a particularly nifty use of Platypus and think it might make
 
 Platypus uses [Sparkle](https://sparkle-project.org) for updates. You can update to the latest version by selecting **Check for updates...** in the application menu. Future releases may or may not break your saved profiles. Consult the version change log for details.
 
-The AppCast XML file is available [here](https://sveinbjorn.org/files/appcasts/PlatypusAppcast.xml).
+The AppCast XML feed is available [here](https://sveinbjorn.org/files/appcasts/PlatypusAppcast.xml).
 
 To get the absolutely latest development version of Platypus, you can check out the source repository on [GitHub](https://github.com/sveinbjornt/Platypus).
 
@@ -509,25 +509,25 @@ To get the absolutely latest development version of Platypus, you can check out 
 ### Can I use Platypus to create proprietary software?
 
 Yes. Platypus is distributed under the terms and conditions of the three-clause [BSD License](https://sveinbjorn.org/files/software/platypus/documentation/License.html).
-
+Do what you want but keep my name out of it.
 
 
 ### Help, text output isn't being shown until the script is done!
 
 You need to autoflush the output buffer. In Python, you can pass the `-u` parameter to the interpreter to get unbuffered output, or alternately flush the output buffer in code:
 
-```
+```python
 import sys
 sys.stdout.flush()
 ```
 
 In Perl, this is done with the following command at the start of your script:
 
-```
+```perl
 $| = 1;
 ```
 
-For help with other scripting languages, [Stack Overflow](https://stackoverflow.com) is your friend.
+Online search should be able to help you out with other scripting languages.
 
 
 
@@ -543,7 +543,7 @@ Assuming that you're using `bash`, you can set the interpreter to `/bin/bash` an
 
 Another alternative is to manually load the user's shell configuration file in your script:
 
-```
+```bash
 source ~/.bashrc
 ```
 
@@ -576,7 +576,7 @@ The script executed by Platypus-generated applications runs from the Resources d
 
 For example, if you have added `file.txt` as a bundled file and want to copy it over to the user's home directory using a shell script, you would run the following command:
 
-```
+```bash
 cp file.txt ~/
 ```
 
@@ -585,7 +585,7 @@ To get the path to the application bundle itself, or its containing directory, y
 
 ### How do Platypus-generated applications work?
 
-Platypus-generated applications are macOS application (.app) [bundles](https://en.wikipedia.org/wiki/Bundle_(OS_X)#OS_X_application_bundles), and have the following directory structure:
+Platypus-generated applications are macOS application (.app) [bundles](https://en.wikipedia.org/wiki/Application_bundle)), and have the following directory structure:
 
 ```
 MyApp.app/                                      Application bundle folder
@@ -629,8 +629,8 @@ Platypus-generated apps are not signed by default. Due to GateKeeper, this means
 
 Platypus apps, like any other apps, can signed using the following command:
 
-```
-/usr/bin/codesign -s "your-signing-identity" path/to/MyApp.app
+```bash
+/usr/bin/codesign -s "your-signing-identity" "path/to/MyApp.app"
 ```
 
 See Apple's [Code Signing Guide](https://developer.apple.com/library/archive/documentation/Security/Conceptual/CodeSigningGuide/Introduction/Introduction.html) for details.
@@ -640,8 +640,8 @@ See Apple's [Code Signing Guide](https://developer.apple.com/library/archive/doc
 
 Yes. You can execute a Platypus-generated binary via the command line. Any arguments you provide will be passed on to your script. Take the following example:
 
-```
-# ./MyApp.app/Contents/MacOS/MyApp -arg1 -arg2
+```bash
+./MyApp.app/Contents/MacOS/MyApp -arg1 -arg2
 ```
 
 In this case, both `-arg1` and `-arg2` will be passed on as arguments to your script. This feature makes it possible to create protocol handlers for Firefox and other programs that invoke macOS application binaries from the shell.
@@ -669,4 +669,4 @@ If you add a file named **Credits.rtf** or **Credits.html** to the bundled files
 
 ----
 
-Copyright &copy; 2003-2025 [Sveinbjorn Thordarson](mailto:sveinbjorn@sveinbjorn.org)
+Copyright &copy; 2003-2025 [Sveinbjorn Thordarson](mailto:sveinbjorn@sveinbjorn.org).
