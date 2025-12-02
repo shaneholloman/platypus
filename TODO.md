@@ -27,8 +27,7 @@
 DONE * Harden CI testing for this old project
 DONE * Create more automated tests for command line tool and document existing tests
 DONE * Add GitHub action to test install of platypus command line tool
+DONE * Base64-encode ScriptExec binary to ensure that Apple's annoying notarization works.
 
 * Update FAQ to answer question wrt relative interpreter path / bundling own interpreter
-* Base64-encode ScriptExec binary to ensure that Apple's annoying notarization works.
-    * Release as an Apple-notarized app
 * Update Uninstall Platypus shell script so it works
