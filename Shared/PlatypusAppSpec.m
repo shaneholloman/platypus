@@ -234,9 +234,9 @@
     
     // Check if app already exists
     if ([FILEMGR fileExistsAtPath:self[AppSpecKey_DestinationPath]]) {
-        if ([self[AppSpecKey_Overwrite] boolValue] == FALSE) {
+        if ([self[AppSpecKey_Overwrite] boolValue] == NO) {
             _error = [NSString stringWithFormat:@"App already exists at path %@. Use -y flag to overwrite.", self[AppSpecKey_DestinationPath]];
-            return FALSE;
+            return NO;
         }
         [self report:@"Overwriting app at path %@", self[AppSpecKey_DestinationPath]];
     }
@@ -268,7 +268,7 @@
     // Make sure we can write to temp path
     if ([FILEMGR isWritableFileAtPath:tmpPath] == NO) {
         _error = [NSString stringWithFormat:@"Could not write to the temp directory '%@'.", tmpPath];
-        return FALSE;
+        return NO;
     }
     
     // .app
@@ -305,12 +305,40 @@
         [gunzipTask setStandardOutput:outFile];
         [gunzipTask launch];
         [gunzipTask waitUntilExit];
+    } else if ([execSrcPath hasSuffix:B64_SUFFIX]){
+        NSString *base64String = [NSString stringWithContentsOfFile:execSrcPath
+                                                           encoding:NSUTF8StringEncoding
+                                                              error:nil];
+        NSString *errmsg = @"Unable to load base64 ScriptExec binary data";
+        if (base64String == nil) {
+            _error = errmsg;
+            return NO;
+        }
+        NSDataBase64DecodingOptions opts = NSDataBase64DecodingIgnoreUnknownCharacters;
+        NSData *decodedData = [[NSData alloc] initWithBase64EncodedString:base64String
+                                                                  options:opts];
+        if (decodedData == nil) {
+            _error = errmsg;
+            return NO;
+        }
+        [decodedData writeToFile:execDestPath atomically:YES];
     } else {
         [FILEMGR copyItemAtPath:execSrcPath toPath:execDestPath error:nil];
     }
     NSDictionary *execAttrDict = @{ NSFilePosixPermissions:[NSNumber numberWithShort:0777] };
     [FILEMGR setAttributes:execAttrDict ofItemAtPath:execDestPath error:nil];
     
+    // Strip signature from the copied ScriptExec binary
+    // We don't really want to do this. The bundled binary
+    // is unsigned anyway, and this would break it if the user
+    // specified a binary previously signed by himself.
+//    [self report:@"Stripping signature from executable"];
+//    NSTask *unsignTask = [[NSTask alloc] init];
+//    [unsignTask setLaunchPath:CODESIGN_PATH];
+//    [unsignTask setArguments:@[@"--remove-signature", execDestPath]];
+//    [unsignTask launch];
+//    [unsignTask waitUntilExit];
+
     // Copy nib file to app bundle
     // .app/Contents/Resources/MainMenu.nib
     [self report:@"Copying nib file to bundle"];
@@ -382,7 +410,7 @@
                                                                    error:nil];
     if (!infoData || ![infoData writeToFile:infoPlistPath atomically:YES]) {
         _error = @"Error writing Info.plist";
-        return FALSE;
+        return NO;
     }
     
     // Copy bundled files to Resources folder
@@ -396,7 +424,6 @@
         // Check if it's an embedded file or a path string
         NSString *bundledFilePath;
         if ([bundledFile isKindOfClass:[NSDictionary class]]) {
-            
             // Bundled files can be embedded in Platypus Profiles
             // If an entry in the array is a dictionary with a "Name"
             // and "Data" key, we create a file in a tmp directory
@@ -433,7 +460,7 @@
             // Otherwise we copy it
             // First remove any file in destination path
             // NB: This means any previously copied files are overwritten
-            // and so users can bundle in their own MainMenu.nib etc.
+            // and so users can bundle in their own MainMenu.nib, etc.
             if ([FILEMGR fileExistsAtPath:bundledFileDestPath]) {
                 [FILEMGR removeItemAtPath:bundledFileDestPath error:nil];
             }
@@ -467,11 +494,11 @@
             BOOL removed = [FILEMGR removeItemAtPath:destPath error:nil];
             if (!removed) {
                 _error = [NSString stringWithFormat:@"Could not remove pre-existing item at path '%@'", destPath];
-                return FALSE;
+                return NO;
             }
         } else {
             _error = [NSString stringWithFormat:@"File already exists at path '%@'", destPath];
-            return FALSE;
+            return NO;
         }
     }
     
@@ -482,7 +509,7 @@
     if (![FILEMGR fileExistsAtPath:destPath]) {
         [FILEMGR removeItemAtPath:tmpPath error:nil];
         _error = @"Failed to create application at the specified destination";
-        return FALSE;
+        return NO;
     }
     
     // Register app with macOS Launch Services to update its database
@@ -491,7 +518,7 @@
     
     [self report:@"Done"];
     
-    return TRUE;
+    return YES;
 }
 
 // Generate AppSettings.plist dictionary
@@ -650,7 +677,7 @@
 // Check spec for basic sanity
 - (BOOL)verify {
     
-    if ([self[AppSpecKey_DestinationPath] hasSuffix:APPBUNDLE_SUFFIX] == FALSE) {
+    if ([self[AppSpecKey_DestinationPath] hasSuffix:APPBUNDLE_SUFFIX] == NO) {
         _error = @"Destination must end with .app";
         return NO;
     }
@@ -754,12 +781,12 @@
         checkboxParamStr = [checkboxParamStr stringByAppendingString:str];
     }
     
-    if ([self[AppSpecKey_RemainRunning] boolValue] == FALSE) {
+    if ([self[AppSpecKey_RemainRunning] boolValue] == NO) {
         NSString *str = shortOpts ? @"-R " : @"--quit-after-execution ";
         checkboxParamStr = [checkboxParamStr stringByAppendingString:str];
     }
     
-    if ([self[AppSpecKey_Version] isEqualToString:DEFAULT_VERSION] == FALSE) {
+    if ([self[AppSpecKey_Version] isEqualToString:DEFAULT_VERSION] == NO) {
         NSString *str = shortOpts ? @"-V" : @"--app-version";
         versionString = [NSString stringWithFormat:@" %@ '%@' ", str, self[AppSpecKey_Version]];
     }
@@ -885,7 +912,7 @@
     
     // Only set app name arg if we have a proper value
     NSString *appNameArg = @"";
-    if ([self[AppSpecKey_Name] isEqualToString:@""] == FALSE) {
+    if ([self[AppSpecKey_Name] isEqualToString:@""] == NO) {
         NSString *str = shortOpts ? @"-a" : @"--name";
         appNameArg = [NSString stringWithFormat: @" %@ '%@' ", str,  self[AppSpecKey_Name]];
     }
@@ -893,7 +920,7 @@
     // Only add identifier argument if it varies from default
     NSString *identifierArg = @"";
     NSString *standardIdentifier = [PlatypusAppSpec bundleIdentifierForAppName:self[AppSpecKey_Name] authorName:nil usingDefaults: NO];
-    if ([self[AppSpecKey_Identifier] isEqualToString:standardIdentifier] == FALSE) {
+    if ([self[AppSpecKey_Identifier] isEqualToString:standardIdentifier] == NO) {
         NSString *str = shortOpts ? @"-I" : @"--bundle-identifier";
         identifierArg = [NSString stringWithFormat: @" %@ %@ ", str, self[AppSpecKey_Identifier]];
     }

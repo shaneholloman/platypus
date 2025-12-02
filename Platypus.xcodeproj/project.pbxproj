@@ -901,7 +901,7 @@
 			buildConfigurationList = F41B217D085CD8FF00B63B0D /* Build configuration list for PBXNativeTarget "Platypus" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
-				F40B227E1B28F331003C05ED /* Run Script To copy ScriptExec binary, CLT and MainMenu.nib to Resources folder */,
+				F40B227E1B28F331003C05ED /* Copy ScriptExec binary, MainMenu.nib and command line tool to Resources folder */,
 				F42622251C03B0DD0052BA33 /* Run Script To Set CFBundleVersion to Build Number */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
@@ -1060,7 +1060,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F40B227E1B28F331003C05ED /* Run Script To copy ScriptExec binary, CLT and MainMenu.nib to Resources folder */ = {
+		F40B227E1B28F331003C05ED /* Copy ScriptExec binary, MainMenu.nib and command line tool to Resources folder */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -1069,12 +1069,12 @@
 			inputPaths = (
 				"",
 			);
-			name = "Run Script To copy ScriptExec binary, CLT and MainMenu.nib to Resources folder";
+			name = "Copy ScriptExec binary, MainMenu.nib and command line tool to Resources folder";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#/bin/sh\n#\n\nRESOURCES_DIR=\"${TARGET_BUILD_DIR}/Platypus.app/Contents/Resources\"\n\necho \"Copying ScriptExec binary to application bundle\"\nSCRIPT_EXEC_APP_PATH=\"${BUILT_PRODUCTS_DIR}/ScriptExec.app\"\nSCRIPT_EXEC_BIN_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/MacOS/ScriptExec\"\nBIN_DEST=\"${RESOURCES_DIR}/ScriptExec\"\nrm \"${BIN_DEST}\" &> /dev/null\ncp \"${SCRIPT_EXEC_BIN_PATH}\" \"${BIN_DEST}\"\nstrip -x \"${BIN_DEST}\"\ngzip -c \"${BIN_DEST}\" > \"${BIN_DEST}.gz\"\nrm \"${BIN_DEST}\" &> /dev/null\n\necho \"Copying ScriptExec's MainMenu.nib to application bundle\"\nSCRIPT_EXEC_NIB_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/Resources/MainMenu.nib\"\nrm -r \"${RESOURCES_DIR}/MainMenu.nib\" &> /dev/null\ncp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${RESOURCES_DIR}/MainMenu.nib\"\n\n# echo \"Copying ScriptExec's optimized MainMenu.nib to application bundle\"\n# OPT_NIB=\"${RESOURCES_DIR}/MainMenu-optimized.nib\"\n# cp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${OPT_NIB}\"\n# ibtool \"${OPT_NIB}\" --strip \"${OPT_NIB}\"\n\n# Copy CLT binary\necho \"Copying command line tool binary to application bundle\"\nCLT_PATH=\"${BUILT_PRODUCTS_DIR}/platypus_clt\"\ncp \"${CLT_PATH}\" \"${RESOURCES_DIR}/platypus_clt\"\n\n# Gzip man page\necho \"Gzipping man page\"\nrm \"${RESOURCES_DIR}/platypus.1.gz\" &> /dev/null\ngzip \"${RESOURCES_DIR}/platypus.1\"\n";
+			shellScript = "#/bin/sh\n#\n\nRESOURCES_DIR=\"${TARGET_BUILD_DIR}/Platypus.app/Contents/Resources\"\n\necho \"Copying ScriptExec binary to application bundle\"\nSCRIPT_EXEC_APP_PATH=\"${BUILT_PRODUCTS_DIR}/ScriptExec.app\"\nSCRIPT_EXEC_BIN_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/MacOS/ScriptExec\"\nBIN_DEST=\"${RESOURCES_DIR}/ScriptExec\"\nrm \"${BIN_DEST}\" &> /dev/null\n# cp \"${SCRIPT_EXEC_BIN_PATH}\" \"${BIN_DEST}\"\n# strip -x \"${BIN_DEST}\"\nbase64 -i \"${SCRIPT_EXEC_BIN_PATH}\" -o \"${BIN_DEST}.b64\"\n\necho \"Copying ScriptExec's MainMenu.nib to application bundle\"\nSCRIPT_EXEC_NIB_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/Resources/MainMenu.nib\"\nrm -r \"${RESOURCES_DIR}/MainMenu.nib\" &> /dev/null\ncp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${RESOURCES_DIR}/MainMenu.nib\"\n\n# echo \"Copying ScriptExec's optimized MainMenu.nib to application bundle\"\n# OPT_NIB=\"${RESOURCES_DIR}/MainMenu-optimized.nib\"\n# cp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${OPT_NIB}\"\n# ibtool \"${OPT_NIB}\" --strip \"${OPT_NIB}\"\n\n# Copy CLT binary\necho \"Copying command line tool binary to application bundle\"\nCLT_PATH=\"${BUILT_PRODUCTS_DIR}/platypus_clt\"\ncp \"${CLT_PATH}\" \"${RESOURCES_DIR}/platypus_clt\"\n\n# Gzip man page\necho \"Gzipping man page\"\nrm \"${RESOURCES_DIR}/platypus.1.gz\" &> /dev/null\ngzip \"${RESOURCES_DIR}/platypus.1\"\n";
 		};
 		F42622251C03B0DD0052BA33 /* Run Script To Set CFBundleVersion to Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1126,7 +1126,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "exit 0\n# We need to sign all binaries within Sparkle framework for update installation to work\n# Only do this for release builds so CI testing works\nif [ \"${CODE_SIGNING_REQUIRED}\" != \"YES\" ]; then\n  exit 0\nfi\n\n\nLOCATION1=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app/Contents/MacOS/Updater\"\nLOCATION2=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate\"\nLOCATION3=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc/Contents/MacOS/Downloader\"\nLOCATION4=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework\"\nLOCATION5=\"${BUILT_PRODUCTS_DIR}/Platypus.app\"\n\nIDENTITY=\"16A0188A9D74911B21953A33684437F70902BC30\"\n#${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#echo $IDENTITY\n\n\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION1\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION2\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION3\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION4\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION5\"\n\n";
+			shellScript = "# exit 0\n# We need to sign all binaries within Sparkle framework for update installation to work\n# Only do this for release builds so CI testing works\nif [ \"${CODE_SIGNING_REQUIRED}\" != \"YES\" ]; then\n  exit 0\nfi\n\n\nLOCATION1=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app/Contents/MacOS/Updater\"\nLOCATION2=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate\"\nLOCATION3=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc/Contents/MacOS/Downloader\"\nLOCATION4=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework\"\nLOCATION5=\"${BUILT_PRODUCTS_DIR}/Platypus.app\"\n# LOCATION6=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Resources/ScriptExec\"\n\nIDENTITY=\"16A0188A9D74911B21953A33684437F70902BC30\"\n#${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#echo $IDENTITY\n\n\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION1\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION2\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION3\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION4\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION5\"\n# codesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION6\"\n";
 		};
 		F4DC737D21644E0400D79823 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

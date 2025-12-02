@@ -61,7 +61,8 @@
 #define CMDLINE_PROGNAME_BUNDLE     @"platypus_clt"
 #define CMDLINE_PROGNAME            @"platypus"
 #define CMDLINE_SCRIPTEXEC_BIN_NAME @"ScriptExec"
-#define CMDLINE_SCRIPTEXEC_GZIP_NAME @"ScriptExec.gz"
+#define CMDLINE_SCRIPTEXEC_BIN_GZ_NAME @"ScriptExec.gz"
+#define CMDLINE_SCRIPTEXEC_BIN_B64_NAME @"ScriptExec.b64"
 #define CMDLINE_MANPAGE_NAME        @"platypus.1.gz"
 #define CMDLINE_DEFAULT_ICON_NAME   @"PlatypusDefault.icns"
 #define CMDLINE_NIB_NAME            @"MainMenu.nib"
@@ -82,6 +83,7 @@
 
 #define APPBUNDLE_SUFFIX            @".app"
 #define GZIP_SUFFIX                 @".gz"
+#define B64_SUFFIX                  @".b64"
 
 #define DEFAULT_TEXT_FONT_NAME      @"Monaco"
 #define DEFAULT_TEXT_FONT_SIZE      13.0

@@ -19,7 +19,7 @@ cd "$1"
 
 echo "Copying resources to share directory"
 # ScriptExec binary
-gunzip -c ScriptExec.gz > "/usr/local/share/platypus/ScriptExec"
+base64 -d -i ScriptExec.b64 > "/usr/local/share/platypus/ScriptExec"
 # Nib
 cp -r MainMenu.nib "/usr/local/share/platypus/MainMenu.nib"
 # Set permissions
