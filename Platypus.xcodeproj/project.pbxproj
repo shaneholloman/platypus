@@ -252,7 +252,6 @@
 		F469CB342ED88E5200B72BC9 /* args.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = args.py; sourceTree = "<group>"; };
 		F469CB352ED88E5200B72BC9 /* conftest.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = conftest.py; sourceTree = "<group>"; };
 		F469CB362ED88E5200B72BC9 /* test_clt.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = test_clt.py; sourceTree = "<group>"; };
-		F469CB372ED8C46B00B72BC9 /* platypus.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = platypus.rb; sourceTree = "<group>"; };
 		F46EF84E13C3F36900E4C0E4 /* Examples */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Examples; sourceTree = "<group>"; };
 		F4714B592BDC3C7B00827A48 /* CHANGES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGES.md; sourceTree = "<group>"; };
 		F471ED1D122DF096001F4761 /* PlatypusAppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = PlatypusAppIcon.icns; sourceTree = "<group>"; };
@@ -432,7 +431,6 @@
 				F4714B592BDC3C7B00827A48 /* CHANGES.md */,
 				F41008072ECB270D000134ED /* TODO.md */,
 				F442E00B1EA38C7100BAD80C /* LICENSE.txt */,
-				F469CB372ED8C46B00B72BC9 /* platypus.rb */,
 				F479672B224EB3EF00CA0746 /* Makefile */,
 				F4F14CBB1C64264D002A2402 /* Scripts */,
 				F4DC074D11F629A40043764E /* Documentation */,
@@ -903,7 +901,7 @@
 			buildConfigurationList = F41B217D085CD8FF00B63B0D /* Build configuration list for PBXNativeTarget "Platypus" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
-				F40B227E1B28F331003C05ED /* Run Script To copy ScriptExec binary, CLT and MainMenu.nib to Resources folder */,
+				F40B227E1B28F331003C05ED /* Copy ScriptExec binary, MainMenu.nib and command line tool to Resources folder */,
 				F42622251C03B0DD0052BA33 /* Run Script To Set CFBundleVersion to Build Number */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
@@ -929,7 +927,8 @@
 				F48B773D11F7661C00351575 /* Resources */,
 				F48B773E11F7661C00351575 /* Sources */,
 				F48B773F11F7661C00351575 /* Frameworks */,
-				F4302B7B21C5A04A001C8BEC /* ShellScript */,
+				F4302B7B21C5A04A001C8BEC /* Update interpreter from script's shebang line */,
+				F469CB382EDF0E2100B72BC9 /* Strip binary aggressively */,
 			);
 			buildRules = (
 			);
@@ -946,6 +945,7 @@
 			buildPhases = (
 				F4E1F6F911F758FB007EE2E3 /* Sources */,
 				F4E1F6FA11F758FB007EE2E3 /* Frameworks */,
+				F469CB392EDF121500B72BC9 /* Strip Binary Aggressively */,
 				F4FB337514FBDAD500BAECEB /* Run Script to Create Man Page HTML document */,
 			);
 			buildRules = (
@@ -1062,7 +1062,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		F40B227E1B28F331003C05ED /* Run Script To copy ScriptExec binary, CLT and MainMenu.nib to Resources folder */ = {
+		F40B227E1B28F331003C05ED /* Copy ScriptExec binary, MainMenu.nib and command line tool to Resources folder */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -1071,12 +1071,12 @@
 			inputPaths = (
 				"",
 			);
-			name = "Run Script To copy ScriptExec binary, CLT and MainMenu.nib to Resources folder";
+			name = "Copy ScriptExec binary, MainMenu.nib and command line tool to Resources folder";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#/bin/sh\n#\n\nRESOURCES_DIR=\"${TARGET_BUILD_DIR}/Platypus.app/Contents/Resources\"\n\necho \"Copying ScriptExec binary to application bundle\"\nSCRIPT_EXEC_APP_PATH=\"${BUILT_PRODUCTS_DIR}/ScriptExec.app\"\nSCRIPT_EXEC_BIN_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/MacOS/ScriptExec\"\nBIN_DEST=\"${RESOURCES_DIR}/ScriptExec\"\nrm \"${BIN_DEST}\" &> /dev/null\ncp \"${SCRIPT_EXEC_BIN_PATH}\" \"${BIN_DEST}\"\nstrip -x \"${BIN_DEST}\"\ngzip -c \"${BIN_DEST}\" > \"${BIN_DEST}.gz\"\nrm \"${BIN_DEST}\" &> /dev/null\n\necho \"Copying ScriptExec's MainMenu.nib to application bundle\"\nSCRIPT_EXEC_NIB_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/Resources/MainMenu.nib\"\nrm -r \"${RESOURCES_DIR}/MainMenu.nib\" &> /dev/null\ncp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${RESOURCES_DIR}/MainMenu.nib\"\n\n# echo \"Copying ScriptExec's optimized MainMenu.nib to application bundle\"\n# OPT_NIB=\"${RESOURCES_DIR}/MainMenu-optimized.nib\"\n# cp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${OPT_NIB}\"\n# ibtool \"${OPT_NIB}\" --strip \"${OPT_NIB}\"\n\n# Copy CLT binary\necho \"Copying command line tool binary to application bundle\"\nCLT_PATH=\"${BUILT_PRODUCTS_DIR}/platypus_clt\"\ncp \"${CLT_PATH}\" \"${RESOURCES_DIR}/platypus_clt\"\n\n# Gzip man page\necho \"Gzipping man page\"\nrm \"${RESOURCES_DIR}/platypus.1.gz\" &> /dev/null\ngzip \"${RESOURCES_DIR}/platypus.1\"\n";
+			shellScript = "#/bin/sh\n#\n\nRESOURCES_DIR=\"${TARGET_BUILD_DIR}/Platypus.app/Contents/Resources\"\n\necho \"Copying ScriptExec binary to application bundle\"\nSCRIPT_EXEC_APP_PATH=\"${BUILT_PRODUCTS_DIR}/ScriptExec.app\"\nSCRIPT_EXEC_BIN_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/MacOS/ScriptExec\"\nBIN_DEST=\"${RESOURCES_DIR}/ScriptExec\"\nrm \"${BIN_DEST}\" &> /dev/null\n# cp \"${SCRIPT_EXEC_BIN_PATH}\" \"${BIN_DEST}\"\nbase64 -i \"${SCRIPT_EXEC_BIN_PATH}\" -o \"${BIN_DEST}.b64\"\n\necho \"Copying ScriptExec's MainMenu.nib to application bundle\"\nSCRIPT_EXEC_NIB_PATH=\"${SCRIPT_EXEC_APP_PATH}/Contents/Resources/MainMenu.nib\"\nrm -r \"${RESOURCES_DIR}/MainMenu.nib\" &> /dev/null\ncp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${RESOURCES_DIR}/MainMenu.nib\"\n\n# echo \"Copying ScriptExec's optimized MainMenu.nib to application bundle\"\n# OPT_NIB=\"${RESOURCES_DIR}/MainMenu-optimized.nib\"\n# cp -r \"${SCRIPT_EXEC_NIB_PATH}\" \"${OPT_NIB}\"\n# ibtool \"${OPT_NIB}\" --strip \"${OPT_NIB}\"\n\n# Copy CLT binary\necho \"Copying command line tool binary to application bundle\"\nCLT_PATH=\"${BUILT_PRODUCTS_DIR}/platypus_clt\"\ncp \"${CLT_PATH}\" \"${RESOURCES_DIR}/platypus_clt\"\n\n# Gzip man page\necho \"Gzipping man page\"\nrm \"${RESOURCES_DIR}/platypus.1.gz\" &> /dev/null\ngzip \"${RESOURCES_DIR}/platypus.1\"\n";
 		};
 		F42622251C03B0DD0052BA33 /* Run Script To Set CFBundleVersion to Build Number */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1093,7 +1093,7 @@
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\nBUILD_NUMBER=`git rev-list HEAD | wc -l`\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $BUILD_NUMBER\" \"${INFOPLIST_FILE}\"\nif [ \"$?\" -ne 0 ] ; then\n    echo \"warning:Error incrementing CFBundleVersion\"\nfi\n";
 		};
-		F4302B7B21C5A04A001C8BEC /* ShellScript */ = {
+		F4302B7B21C5A04A001C8BEC /* Update interpreter from script's shebang line */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -1103,6 +1103,7 @@
 			);
 			inputPaths = (
 			);
+			name = "Update interpreter from script's shebang line";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -1110,6 +1111,44 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n# Read interpreter path from the script's shebang line\n# and set it as interpreter in AppSettings.plist\n# This is just for convenience when debugging and switching\n# often between interpreters. Better to control it via shebang.\nAPPSETTINGS=\"${TARGET_BUILD_DIR}/ScriptExec.app/Contents/Resources/AppSettings.plist\"\nSCRIPT=\"${TARGET_BUILD_DIR}/ScriptExec.app/Contents/Resources/script\"\nINTERPRETER=$(head -n 1 $SCRIPT | cut -b 3-300 | tr -d '\\n')\n/usr/libexec/PlistBuddy -c \"Set :InterpreterPath ${INTERPRETER}\" \"${APPSETTINGS}\"\n\n\n\n\n\n\n\n\n\n\n\n\n";
+		};
+		F469CB382EDF0E2100B72BC9 /* Strip binary aggressively */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip binary aggressively";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Deployment\" ]; then\n    echo \"Stripping binary....\"\n    strip -Sx \"${BUILT_PRODUCTS_DIR}/ScriptExec.app/Contents/MacOS/ScriptExec\"\nfi\n";
+		};
+		F469CB392EDF121500B72BC9 /* Strip Binary Aggressively */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Binary Aggressively";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Deployment\" ]; then\n    echo \"Stripping binary....\"\n    strip -Sx \"${BUILT_PRODUCTS_DIR}/platypus_clt\"\nfi\n";
 		};
 		F49DB7A925727F65009B6257 /* Sign All Binaries */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1128,7 +1167,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "exit 0\n# We need to sign all binaries within Sparkle framework for update installation to work\n# Only do this for release builds so CI testing works\nif [ \"${CODE_SIGNING_REQUIRED}\" != \"YES\" ]; then\n  exit 0\nfi\n\n\nLOCATION1=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app/Contents/MacOS/Updater\"\nLOCATION2=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate\"\nLOCATION3=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc/Contents/MacOS/Downloader\"\nLOCATION4=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework\"\nLOCATION5=\"${BUILT_PRODUCTS_DIR}/Platypus.app\"\n\nIDENTITY=\"16A0188A9D74911B21953A33684437F70902BC30\"\n#${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#echo $IDENTITY\n\n\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION1\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION2\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION3\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION4\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION5\"\n\n";
+			shellScript = "# exit 0\n# We need to sign all binaries within Sparkle framework for update installation to work\n# Only do this for release builds so CI testing works\nif [ \"${CODE_SIGNING_REQUIRED}\" != \"YES\" ]; then\n  exit 0\nfi\n\n\nLOCATION1=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app/Contents/MacOS/Updater\"\nLOCATION2=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate\"\nLOCATION3=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc/Contents/MacOS/Downloader\"\nLOCATION4=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Frameworks/Sparkle.framework\"\nLOCATION5=\"${BUILT_PRODUCTS_DIR}/Platypus.app\"\n# LOCATION6=\"${BUILT_PRODUCTS_DIR}/Platypus.app/Contents/Resources/ScriptExec\"\n\nIDENTITY=\"16A0188A9D74911B21953A33684437F70902BC30\"\n#${EXPANDED_CODE_SIGN_IDENTITY_NAME}\n\n#echo $IDENTITY\n\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION1\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION2\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION3\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION4\"\ncodesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION5\"\n# codesign --verbose --force -o runtime --deep --sign \"$IDENTITY\" \"$LOCATION6\"\n";
 		};
 		F4DC737D21644E0400D79823 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1309,6 +1348,7 @@
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GENERATE_PKGINFO_FILE = NO;
 				INFOPLIST_FILE = "Application/Resources/Platypus-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Platypus;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -1331,6 +1371,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.sveinbjorn.Platypus;
 				PRODUCT_NAME = Platypus;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIPFLAGS = "-xS";
 				VALIDATE_PRODUCT = NO;
 				WARNING_CFLAGS = (
 					"-Wno-gnu",
@@ -1375,6 +1416,7 @@
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
+				GENERATE_PKGINFO_FILE = NO;
 				INFOPLIST_FILE = "Application/Resources/Platypus-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Platypus;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
@@ -1397,6 +1439,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.sveinbjorn.Platypus;
 				PRODUCT_NAME = Platypus;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIPFLAGS = "-xS";
 				VALIDATE_PRODUCT = YES;
 				WARNING_CFLAGS = (
 					"-Wno-gnu",
@@ -1573,6 +1616,7 @@
 				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GENERATE_PKGINFO_FILE = NO;
 				IBC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = "ScriptExec/Resources/ScriptExec-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -1581,6 +1625,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.sveinbjorn.ScriptExec;
 				PRODUCT_NAME = ScriptExec;
+				STRIPFLAGS = "-xS";
 				WARNING_CFLAGS = "-Wpartial-availability";
 			};
 			name = Development;
@@ -1607,6 +1652,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GENERATE_PKGINFO_FILE = NO;
 				IBC_FLATTEN_NIBS = NO;
 				INFOPLIST_FILE = "ScriptExec/Resources/ScriptExec-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
@@ -1614,6 +1660,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.sveinbjorn.ScriptExec;
 				PRODUCT_NAME = ScriptExec;
+				STRIPFLAGS = "-xS";
 				WARNING_CFLAGS = "-Wpartial-availability";
 			};
 			name = Deployment;
@@ -1693,6 +1740,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.sveinbjorn.platypus-clt";
 				PRODUCT_NAME = platypus_clt;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIPFLAGS = "-xS";
 			};
 			name = Development;
 		};
@@ -1728,6 +1776,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.sveinbjorn.platypus-clt";
 				PRODUCT_NAME = platypus_clt;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRIPFLAGS = "-xS";
 			};
 			name = Deployment;
 		};

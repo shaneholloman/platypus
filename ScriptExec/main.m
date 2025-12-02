@@ -30,6 +30,49 @@
 
 @import Cocoa;
 
+#include <mach-o/dyld.h>
+#include <sys/param.h>
+#include <string.h>
+#include <libgen.h>
+
+BOOL isBundled(void) {
+    char path[MAXPATHLEN];
+    uint32_t path_size = sizeof(path);
+    
+    // Get absolute path to executable
+    if (_NSGetExecutablePath(path, &path_size) != 0) {
+        return NO;
+    }
+    
+    // Resolve symlinks
+    char realPath[MAXPATHLEN];
+    if (realpath(path, realPath) == NULL) {
+        return NO;
+    }
+    
+    // Walk up the tree checking for structure
+    // Expected: .../MyApp.app/Contents/MacOS/MyApp
+    // NB: dirname() modifies string in place
+
+    // Check if parent dir is "MacOS"
+    char *parent = dirname(realPath); // /path/to/MyApp.app/Contents/MacOS
+    if (strcmp(basename(parent), "MacOS") != 0) {
+        return NO;
+    }
+    
+    // Check if parent dir is "Contents"
+    parent = dirname(parent); // /path/to/MyApp.app/Contents
+    if (strcmp(basename(parent), "Contents") != 0) return NO;
+
+    // Check if parent dir ends with ".app" suffix
+    parent = dirname(parent); // /path/to/MyApp.app
+    char *grandparent = basename(parent);
+    size_t len = strlen(grandparent);
+    if (len < 4 || strcmp(grandparent + len - 4, ".app") != 0) return NO;
+    
+    return YES;
+}
+
 #ifdef DEBUG
     void exceptionHandler(NSException *exception);
 
@@ -42,6 +85,10 @@
 #endif
 
 int main(int argc, char *argv[]) {
+    if (isBundled() == NO) {
+        printf("This binary must run from an application bundle\n");
+        exit(EXIT_FAILURE);
+    }
 #ifdef DEBUG
     NSSetUncaughtExceptionHandler(&exceptionHandler);
 #endif

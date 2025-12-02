@@ -1,12 +1,16 @@
 # Platypus Version History
 
-### For 5.5.0 - 17/11/2025
+### For 5.5.0 - 02/12/2025
 
-* Fixed bug where the argument settings window would lock up the interface
+* Platypus.app and the platypus command line tool are now notarized by Apple
+* Now requires macOS 11 "Big Sur" or later
+* Fixed bug where the Argument settings dialog could lock up the interface
 * Better support for Dark Mode
-* Platypus now requires macOS 11 "Big Sur" or later
 * Preferences now named Settings according to new macOS convention
-* Modernized codebase
+* Added `--executable-path` and `--nib-path` flags to command line tool to allow users to inject custom binaries or nib files
+* Improved install script for command line tool to ease installation in CI environments
+* Extensive modernization of codebase
+* Much-improved tests for command line tool
 
 ### For 5.4.1 - 22/10/2022
 

@@ -6,17 +6,23 @@
         <description>Most recent release list for Platypus, with links to updates.</description>
         <language>en</language>
         <item>
-            <title>Version 5.4</title>
-            <pubDate>Sat, 22 Oct 2022 16:45:00 +0000</pubDate>
-            <enclosure url="https://sveinbjorn.org/files/software/platypus/platypus5.4.1.zip" sparkle:version="1240" sparkle:shortVersionString="5.4.1" type="application/octet-stream"
-                sparkle:dsaSignature="MCwCFF2ZMCUGXbtRXDoDVg6xrozx5pUbAhRD5MBPCvxyBiZuX2xXqSoxtvYFyw=="
-            sparkle:edSignature="Yu/neYBUcK6IdTuX5VW4evhYbpDMqb/upGtiTmm5AweSEwjleHMm54vMUKGJTuHlLFIOiBF9b5gSLoOUoB25Bg==" length="4755863"
+            <title>Version 5.5.0</title>
+            <pubDate>Tue, 2 Dec 2025 14:31:00 +0000</pubDate>
+            <enclosure url="https://sveinbjorn.org/files/software/platypus/platypus5.5.0.zip" sparkle:version="1326" sparkle:shortVersionString="5.5.0" type="application/octet-stream" sparkle:edSignature="ZJZNksVRjRw6IXJw3fGgNTypvv9+EULeo545B4aMK2ETV6KHT2DXoLQGNjQnQ2xk404owm9CT5wvugeBuEXuBQ==" length="3597912"
             />
             <sparkle:minimumSystemVersion>10.13.0</sparkle:minimumSystemVersion>
             <description><![CDATA[
-                <h2>Version 5.4.1</h2>
+                <h2>Version 5.5.0</h2>
                 <ul>
-                    <li>Fixed signing issues</li>
+                    <li>Platypus.app and the platypus command line tool are now notarized by Apple</li>
+                    <li>Now requires macOS 11 "Big Sur" or later</li>
+                    <li>Fixed bug where the Argument settings dialog could lock up the interface</li>
+                    <li>Better support for Dark Mode</li>
+                    <li>Preferences now named Settings according to new macOS convention</li>
+                    <li>Added --executable-path and --nib-path flags to command line tool to allow users to inject custom binaries or nib files</li>
+                    <li>Improved install script for command line tool to ease installation in CI environments</li>
+                    <li>Extensive modernization of codebase</li>
+                    <li>Much-improved tests for command line tool</li>
                 </ul>
             ]]></description>
         </item>

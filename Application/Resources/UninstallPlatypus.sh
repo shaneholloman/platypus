@@ -3,22 +3,17 @@
 # UninstallPlatypus.sh
 # Platypus
 
-cd "$1"
-
-if [ -e "%%APP_SUPPORT_FOLDER%%" ]
-then
+if [ -e "%%PROGRAM_APP_SUPPORT_PATH%%" ]; then
     echo "Deleting application support folder..."
-    mv "%%APP_SUPPORT_FOLDER%%" "~/.Trash/%%PROGRAM_NAME%%ApplicationSupport-TRASHED-$RANDOM"
+    mv "%%PROGRAM_APP_SUPPORT_PATH%%" ~/.Trash/%%PROGRAM_NAME%%ApplicationSupport-TRASHED-$RANDOM
 fi
 
-if [ -e "~/Library/Preferences/%%PROGRAM_BUNDLE_IDENTIFIER%%.plist" ]
-then
+if [ -e ~/Library/Preferences/%%PROGRAM_BUNDLE_IDENTIFIER%%.plist ]; then
     echo "Deleting %%PROGRAM_NAME%% preferences..."
-    mv "~/Library/Preferences/%%PROGRAM_BUNDLE_IDENTIFIER%%.plist" "~/.Trash/%%PROGRAM_BUNDLE_IDENTIFIER%%-TRASHED-$RANDOM.plist"
+    mv ~/Library/Preferences/%%PROGRAM_BUNDLE_IDENTIFIER%%.plist ~/.Trash/%%PROGRAM_BUNDLE_IDENTIFIER%%-TRASHED-$RANDOM.plist
 fi
 
-if [ -e "$1/../../../%%PROGRAM_NAME%%.app" ]
-then
+if [ -e "%%APP_BUNDLE_PATH%%" ]; then
     echo "Moving %%PROGRAM_NAME%%.app to Trash"
-    mv "$1/../../../%%PROGRAM_NAME%%.app" "~/.Trash/%%PROGRAM_NAME%%-TRASHED-$RANDOM.app"
+    mv "%%APP_BUNDLE_PATH%%" ~/.Trash/%%PROGRAM_NAME%%-TRASHED-$RANDOM.app
 fi
