@@ -10,7 +10,7 @@
             <pubDate>Tue, 2 Dec 2025 14:31:00 +0000</pubDate>
             <enclosure url="https://sveinbjorn.org/files/software/platypus/platypus5.5.0.zip" sparkle:version="1326" sparkle:shortVersionString="5.5.0" type="application/octet-stream" sparkle:edSignature="ZJZNksVRjRw6IXJw3fGgNTypvv9+EULeo545B4aMK2ETV6KHT2DXoLQGNjQnQ2xk404owm9CT5wvugeBuEXuBQ==" length="3597912"
             />
-            <sparkle:minimumSystemVersion>10.13.0</sparkle:minimumSystemVersion>
+            <sparkle:minimumSystemVersion>11.5.0</sparkle:minimumSystemVersion>
             <description><![CDATA[
                 <h2>Version 5.5.0</h2>
                 <ul>
